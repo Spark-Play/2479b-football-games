@@ -32,6 +32,8 @@ public class UIManagerMainScreen : MonoBehaviour
     TMP_Text getReadySubtitle;
     [SerializeField]
     TMP_Text getReadyTotalScore;
+    [SerializeField]
+    TMP_Text getReadyCountdown;
 
     private MinigameInfo currentMinigameInfo;
 
@@ -62,6 +64,28 @@ public class UIManagerMainScreen : MonoBehaviour
         mainScreens[currentScreen].SetActive(true);
     }
 
+    public void FirstTimeMinigameTransition()
+    {
+        StartCoroutine(IFirstTimeMinigameTransition());
+    }
+
+    IEnumerator IFirstTimeMinigameTransition()
+    {
+        currentScreen = 0;
+
+        NextScreen();
+
+
+        yield return new WaitForSeconds(2f);
+
+        NextScreen();
+
+        yield return new WaitForSeconds(2f);
+
+        MinigameTransition();
+
+    }
+
     public void MinigameTransition()
     {
         StartCoroutine(IMinigameTransition());
@@ -69,18 +93,38 @@ public class UIManagerMainScreen : MonoBehaviour
 
     IEnumerator IMinigameTransition()
     {
-        yield return new WaitForSeconds(4f);
+        currentScreen = 2;
+        GameManager.instance.LoadMinigame();
 
         NextScreen();
-        yield return new WaitForSeconds(5f);
+
+        yield return new WaitForSeconds(2f);
 
         NextScreen();
-        yield return new WaitForSeconds(4f);
 
-        NextScreen(); 
-        yield return new WaitForSeconds(4f);
 
-        NextScreen();
+        StartCoroutine(GetReadyCountdown(3));
+
     }
+
+    IEnumerator GetReadyCountdown(int countdownLength)
+    {
+
+        for (int i = countdownLength; i > 0; i--)
+        {
+            getReadyCountdown.text = i.ToString();
+            yield return new WaitForSeconds(1f);
+        }
+
+        getReadyCountdown.text = "GO!";
+
+
+        yield return new WaitForSeconds(1f);
+
+        mainScreens[currentScreen].SetActive(false);
+
+        GameManager.instance.StartMinigame();
+    }
+
 
 }

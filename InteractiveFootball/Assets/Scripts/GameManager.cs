@@ -1,21 +1,121 @@
+using System.Collections;
+using Unity.Multiplayer.PlayMode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public UIManagerMainScreen mainScreen;
+    public UIManagerCompanionScreen companionScreen;
 
     public int currentPlayer = 0;
     public int currentGamemode = 0;
     public int playerCount = 0;
+    public float progress = 0;
     public MinigameInfo[] minigameInfos;
 
     public int[] totalScores;
     public string[] playerNames;
-    public float duration = 15;
+    public int duration = 15;
 
     public static GameManager instance;
     private void Awake()
     {
         instance = this;
     }
+
+    public void StartSession()
+    {
+        companionScreen.NextScreen();
+        companionScreen.UpdateMinigameScreen();
+
+        mainScreen.UpdateAttributes();
+        mainScreen.FirstTimeMinigameTransition();
+
+        StartCoroutine(IStartOverallTimer());
+    }
+
+    IEnumerator IStartOverallTimer()
+    {
+        //yield return new WaitForSeconds(duration * 60);
+
+        int durationInSeconds = duration * 60;
+
+
+        for (int i = durationInSeconds; i >= 0; i--)
+        {
+            int minutes = i / 60;
+            int seconds = i % 60;
+
+            progress = (durationInSeconds - i + 0.00001f) / durationInSeconds;
+
+            print(progress);
+
+            companionScreen.progressSlider.value = progress;
+            companionScreen.sessionTimeRemaining.text = $"{minutes:00}:{seconds:00}";
+            yield return new WaitForSeconds(1f);
+        }
+
+        EndGame();
+    }
+
+    public void BeginNewMinigame()
+    {
+        SceneManager.UnloadSceneAsync(minigameInfos[currentGamemode].sceneName);
+
+        if(currentGamemode >= 3)
+        {
+            EndGame();
+        }
+        if(currentPlayer >= playerCount-1)
+        {
+            currentPlayer = 0;
+            currentGamemode++;
+            //CalculateProgress();
+            companionScreen.UpdateMinigameScreen();
+            mainScreen.UpdateAttributes();
+            mainScreen.FirstTimeMinigameTransition();
+        }
+        else
+        {
+            currentPlayer++;
+            //CalculateProgress();
+            companionScreen.UpdateMinigameScreen();
+            mainScreen.UpdateAttributes();
+            mainScreen.MinigameTransition();
+        }
+
+
+        //companionScreen.progressSlider.value = 
+
+    }
+
+    void CalculateProgress()
+    {
+        float totalProgress = minigameInfos.Length * playerCount;
+
+        float playerProgress = currentPlayer + 1;
+
+        float minigameProgress = currentGamemode * minigameInfos.Length;
+
+        progress = minigameProgress + playerProgress / totalProgress;
+    }
+
+    public void LoadMinigame()
+    {
+        SceneManager.LoadScene(minigameInfos[currentGamemode].sceneName, LoadSceneMode.Additive);
+    }
+
+    public void StartMinigame()
+    {
+        IMinigameController.instance.StartMinigame();
+    }
+
+
+    public void EndGame()
+    {
+        print("endgame");
+    }
+
 
 }

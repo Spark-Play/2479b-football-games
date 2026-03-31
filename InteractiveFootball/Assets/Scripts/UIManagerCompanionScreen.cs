@@ -2,6 +2,7 @@ using TMPro;
 using Unity.Hierarchy;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.UI;
 
 public class UIManagerCompanionScreen : MonoBehaviour
 {
@@ -25,13 +26,15 @@ public class UIManagerCompanionScreen : MonoBehaviour
     [SerializeField]
     TMP_Text sessionPlayer;
     [SerializeField]
-    TMP_Text sessionTimeRemaining;
+    public Slider progressSlider;
+    [SerializeField]
+    public TMP_Text sessionTimeRemaining;
     [SerializeField]
     TMP_Text sessionWinner;
     [SerializeField]
     TMP_Text sessionTotalScore;
 
-    public void SetGameDuration(float duration)
+    public void SetGameDuration(int duration)
     {
         GameManager.instance.duration = duration;
 
@@ -65,7 +68,16 @@ public class UIManagerCompanionScreen : MonoBehaviour
     {
         sessionCurrentMode.text = GameManager.instance.minigameInfos[GameManager.instance.currentGamemode].name;
         sessionPlayer.text = GameManager.instance.playerNames[GameManager.instance.currentPlayer];
+
     }
+
+
+    public void StartSession()
+    {
+        GameManager.instance.StartSession();
+    }
+
+
 
     int currentScreen = 0;
 
