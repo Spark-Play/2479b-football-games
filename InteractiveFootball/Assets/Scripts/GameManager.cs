@@ -24,6 +24,13 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    public void UpdateScore(int pointValue)
+    {
+        totalScores[currentPlayer] += pointValue;
+
+        //Update Score Text Here
+    }
+
     public void StartSession()
     {
         companionScreen.NextScreen();

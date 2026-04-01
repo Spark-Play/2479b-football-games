@@ -23,7 +23,7 @@ public class ShotHandler : MonoBehaviour
                 //hit.collider.gameObject.SendMessage("OnObjectClicked", SendMessageOptions.DontRequireReceiver);
 
                 // Option B: Better practice (Interface or Component call)
-                hit.collider.GetComponent<ITargetHandler>()?.OnHit();
+                hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit();
             }
         }
     }
