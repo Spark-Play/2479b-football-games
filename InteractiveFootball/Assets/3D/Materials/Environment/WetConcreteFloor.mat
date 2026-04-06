@@ -118,13 +118,13 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.769
+    - _Smoothness: 0.69
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 1
-    - _WaterReflect: 0.15
+    - _WaterReflect: 0.425
     - _WaterScale: 46.2
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
