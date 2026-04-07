@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -12,15 +13,9 @@ public class UIManagerMainScreen : MonoBehaviour
     [Header("Dynamic Attributes")]
     [Header("Instructions")]
     [SerializeField]
-    TMP_Text instructionsTitle;
-    [SerializeField]
     TMP_Text instructionsObjective;
-    [SerializeField]
-    TMP_Text instructionsFirstUp;
 
     [Header("TitleCard")]
-    [SerializeField]
-    TMP_Text titleCardTitle;
     [SerializeField]
     TMP_Text titleCardSubtitle;
     [SerializeField]
@@ -31,8 +26,6 @@ public class UIManagerMainScreen : MonoBehaviour
     [SerializeField]
     TMP_Text getReadySubtitle;
     [SerializeField]
-    TMP_Text getReadyTotalScore;
-    [SerializeField]
     TMP_Text getReadyCountdown;
 
     private MinigameInfo currentMinigameInfo;
@@ -41,16 +34,16 @@ public class UIManagerMainScreen : MonoBehaviour
     {
         currentMinigameInfo = GameManager.instance.minigameInfos[GameManager.instance.currentGamemode];
 
-        instructionsTitle.text = currentMinigameInfo.name;
+        //instructionsTitle.text = currentMinigameInfo.name;
         instructionsObjective.text = currentMinigameInfo.description;
-        instructionsFirstUp.text = "First Up: " + GameManager.instance.playerNames[GameManager.instance.currentPlayer];
+        //instructionsFirstUp.text = "First Up: " + GameManager.instance.playerNames[GameManager.instance.currentPlayer];
 
-        titleCardTitle.text = currentMinigameInfo.name;
+        //titleCardTitle.text = currentMinigameInfo.name;
         titleCardSubtitle.text = currentMinigameInfo.subtitle;
         titleCardImage.sprite = currentMinigameInfo.logo;
 
-        getReadySubtitle.text =  $"{GameManager.instance.playerNames[GameManager.instance.currentPlayer]} | {currentMinigameInfo.name}";
-        getReadyTotalScore.text = $"Total Score: {GameManager.instance.totalScores[GameManager.instance.currentPlayer]}";
+        //getReadySubtitle.text =  $"{GameManager.instance.playerNames[GameManager.instance.currentPlayer]} | {currentMinigameInfo.name}";
+        //getReadyTotalScore.text = $"Total Score: {GameManager.instance.totalScores[GameManager.instance.currentPlayer]}";
 
     }
 

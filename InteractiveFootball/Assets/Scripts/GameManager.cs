@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.Multiplayer.PlayMode;
 using UnityEngine;
@@ -34,9 +35,7 @@ public class GameManager : MonoBehaviour
     public void StartSession()
     {
         companionScreen.NextScreen();
-        companionScreen.UpdateMinigameScreen();
-
-        mainScreen.UpdateAttributes();
+        UpdateAttributes();
         mainScreen.FirstTimeMinigameTransition();
 
         StartCoroutine(IStartOverallTimer());
@@ -56,7 +55,7 @@ public class GameManager : MonoBehaviour
 
             progress = (durationInSeconds - i + 0.00001f) / durationInSeconds;
 
-            print(progress);
+            //print(progress);
 
             companionScreen.progressSlider.value = progress;
             companionScreen.sessionTimeRemaining.text = $"{minutes:00}:{seconds:00}";
@@ -79,22 +78,30 @@ public class GameManager : MonoBehaviour
             currentPlayer = 0;
             currentGamemode++;
             //CalculateProgress();
-            companionScreen.UpdateMinigameScreen();
-            mainScreen.UpdateAttributes();
+            UpdateAttributes();
             mainScreen.FirstTimeMinigameTransition();
         }
         else
         {
             currentPlayer++;
             //CalculateProgress();
-            companionScreen.UpdateMinigameScreen();
-            mainScreen.UpdateAttributes();
+            UpdateAttributes();
             mainScreen.MinigameTransition();
         }
 
 
         //companionScreen.progressSlider.value = 
 
+    }
+
+
+    public static event Action OnUpdateAttributes;
+
+    void UpdateAttributes()
+    {
+        //companionScreen.UpdateMinigameScreen();
+        mainScreen.UpdateAttributes();
+        OnUpdateAttributes.Invoke();
     }
 
     void CalculateProgress()

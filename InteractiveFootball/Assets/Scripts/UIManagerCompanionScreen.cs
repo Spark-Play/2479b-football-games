@@ -60,16 +60,16 @@ public class UIManagerCompanionScreen : MonoBehaviour
             if(setupPlayerNameInputs[i].text !="") GameManager.instance.playerNames[i] = setupPlayerNameInputs[i].text;
 
             setupPlayerNames[i].text = GameManager.instance.playerNames[i];
-            print(GameManager.instance.playerNames[i]);
+            //print(GameManager.instance.playerNames[i]);
         }
     }
 
-    public void UpdateMinigameScreen()
-    {
-        sessionCurrentMode.text = GameManager.instance.minigameInfos[GameManager.instance.currentGamemode].name;
-        sessionPlayer.text = GameManager.instance.playerNames[GameManager.instance.currentPlayer];
+    //public void UpdateMinigameScreen()
+    //{
+    //    sessionCurrentMode.text = GameManager.instance.minigameInfos[GameManager.instance.currentGamemode].name;
+    //    sessionPlayer.text = GameManager.instance.playerNames[GameManager.instance.currentPlayer];
 
-    }
+    //}
 
 
     public void StartSession()

@@ -17,7 +17,7 @@ public class ShotHandler : MonoBehaviour
             // 3. Check for a specific tag or component
             if (hit.collider.CompareTag("Target"))
             {
-                Debug.Log("Hit the specific object!");
+                //Debug.Log("Hit the specific object!");
 
                 // Option A: Classic Unity Message
                 //hit.collider.gameObject.SendMessage("OnObjectClicked", SendMessageOptions.DontRequireReceiver);
