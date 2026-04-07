@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public float progress = 0;
     public MinigameInfo[] minigameInfos;
 
+
+    public int individualScore = 0;
     public int[] totalScores;
     public string[] playerNames;
     public int duration = 15;
@@ -71,7 +73,10 @@ public class GameManager : MonoBehaviour
 
         if(currentGamemode >= 3)
         {
-            EndGame();
+            currentPlayer = 0;
+            currentGamemode = 0;
+            UpdateAttributes();
+            mainScreen.EndOfMinigame();
         }
         if(currentPlayer >= playerCount-1)
         {
@@ -79,14 +84,14 @@ public class GameManager : MonoBehaviour
             currentGamemode++;
             //CalculateProgress();
             UpdateAttributes();
-            mainScreen.FirstTimeMinigameTransition();
+            mainScreen.EndOfMinigame();
         }
         else
         {
             currentPlayer++;
             //CalculateProgress();
             UpdateAttributes();
-            mainScreen.MinigameTransition();
+            mainScreen.EndOfPlayerTurn();
         }
 
 

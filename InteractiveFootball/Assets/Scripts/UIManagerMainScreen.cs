@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,6 +58,43 @@ public class UIManagerMainScreen : MonoBehaviour
         mainScreens[currentScreen].SetActive(true);
     }
 
+
+    public void EndOfMinigame()
+    {
+        StartCoroutine(IEndOfMinigame());
+    }
+
+    private IEnumerator IEndOfMinigame()
+    {
+        NextScreen();
+        yield return new WaitForSeconds(2f);
+        NextScreen();
+        yield return new WaitForSeconds(2f);
+        NextScreen();
+        NextScreen();
+
+        yield return new WaitForSeconds(2f);
+        FirstTimeMinigameTransition();
+    }
+     
+    public void EndOfPlayerTurn()
+    {
+        StartCoroutine(IEndOfPlayerTurn());
+    }
+
+    private IEnumerator IEndOfPlayerTurn()
+    {
+        NextScreen();
+        yield return new WaitForSeconds(2f);
+        NextScreen();
+        yield return new WaitForSeconds(2f);
+        NextScreen();
+        yield return new WaitForSeconds(2f);
+
+        MinigameTransition();
+
+    }
+
     public void FirstTimeMinigameTransition()
     {
         StartCoroutine(IFirstTimeMinigameTransition());
@@ -64,10 +102,13 @@ public class UIManagerMainScreen : MonoBehaviour
 
     IEnumerator IFirstTimeMinigameTransition()
     {
+        mainScreens[currentScreen].SetActive(false);
         currentScreen = 0;
 
         NextScreen();
+        yield return new WaitForSeconds(2f);
 
+        NextScreen();
 
         yield return new WaitForSeconds(2f);
 
@@ -86,7 +127,12 @@ public class UIManagerMainScreen : MonoBehaviour
 
     IEnumerator IMinigameTransition()
     {
-        currentScreen = 2;
+
+        mainScreens[currentScreen].SetActive(false);
+
+        GameManager.instance.individualScore = 0;
+
+        currentScreen = 3;
         GameManager.instance.LoadMinigame();
 
         NextScreen();
