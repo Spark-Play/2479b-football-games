@@ -7,7 +7,7 @@ public class AutoUpdatedText : MonoBehaviour
 
     public string textFormat;
 
-    public enum TextType { playerName, minigameName, totalScore };
+    public enum TextType { playerName, minigameName, totalScore, individualScore };
 
     public TextType textType;
 
@@ -41,7 +41,10 @@ public class AutoUpdatedText : MonoBehaviour
         {
             text = GameManager.instance.totalScores[GameManager.instance.currentPlayer].ToString();
         }
-
+        else if (textType == TextType.individualScore)
+        {
+            text = GameManager.instance.individualScore.ToString();
+        }
 
 
         if (textFormat == "")

@@ -29,6 +29,8 @@ public class UIManagerMainScreen : MonoBehaviour
     [SerializeField]
     TMP_Text getReadyCountdown;
 
+
+
     private MinigameInfo currentMinigameInfo;
 
     public void UpdateAttributes()
@@ -133,37 +135,21 @@ public class UIManagerMainScreen : MonoBehaviour
         GameManager.instance.individualScore = 0;
 
         currentScreen = 3;
+
+        NextScreen();
+
+        yield return new WaitForSeconds(1.5f);
         GameManager.instance.LoadMinigame();
-
-        NextScreen();
-
-        yield return new WaitForSeconds(2f);
-
-        NextScreen();
-
-
-        StartCoroutine(GetReadyCountdown(3));
-
-    }
-
-    IEnumerator GetReadyCountdown(int countdownLength)
-    {
-
-        for (int i = countdownLength; i > 0; i--)
-        {
-            getReadyCountdown.text = i.ToString();
-            yield return new WaitForSeconds(1f);
-        }
-
-        getReadyCountdown.text = "GO!";
-
-
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         mainScreens[currentScreen].SetActive(false);
 
-        GameManager.instance.StartMinigame();
+        //IMinigameController.instance.MinigameIntro();
+
+
     }
+
+    
 
 
 }

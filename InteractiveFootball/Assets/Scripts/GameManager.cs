@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using Unity.Multiplayer.PlayMode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     public float progress = 0;
     public MinigameInfo[] minigameInfos;
 
-
+    
     public int individualScore = 0;
     public int[] totalScores;
     public string[] playerNames;
@@ -30,7 +31,8 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int pointValue)
     {
         totalScores[currentPlayer] += pointValue;
-
+        individualScore += pointValue;
+        IMinigameController.instance.scoreText.text = individualScore.ToString();
         //Update Score Text Here
     }
 

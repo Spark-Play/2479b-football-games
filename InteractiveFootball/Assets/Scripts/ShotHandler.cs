@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class ShotHandler : MonoBehaviour
 {
-    
 
+    [SerializeField]
+    Camera camera;
 
     public void ShootUsingCoordinates(Vector2 screenCoordinates)
     {
         // 1. Create a ray from the camera to the mouse position
-        Ray ray = Camera.main.ScreenPointToRay(screenCoordinates);
+        Ray ray = camera.ScreenPointToRay(screenCoordinates);
         RaycastHit hit;
 
         // 2. Shoot the ray and see if it hits a collider
