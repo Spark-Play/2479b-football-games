@@ -63,7 +63,7 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
 
     public void OnHit()
     {
-        GameManager.instance.UpdateScore(pointValue);
+        if(GameManager.instance != null) GameManager.instance.UpdateScore(pointValue);
         StartCoroutine(SpawnNewTargets());
     }
 
@@ -79,9 +79,9 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
 
             
 
-            GameObject targetObject = Instantiate(targetVariants[Random.Range(0,targetVariants.Length)], transform.position, Quaternion.identity);
+            GameObject targetObject = Instantiate(targetVariants[Random.Range(0,targetVariants.Length)], transform.parent);
             targetObject.GetComponent<SplittingTarget>().safe = false;
-            targetObject.transform.localPosition = new Vector3(transform.localPosition.x + Random.Range(-3.1f,3.1f), transform.localPosition.y + Random.Range(-3.1f, 3.1f), 0);
+            targetObject.transform.localPosition = new Vector3(transform.localPosition.x + Random.Range(-2.1f,2.1f), transform.localPosition.y + Random.Range(-1.1f, 1.1f), 0f);
         }
 
         Destroy(gameObject);
