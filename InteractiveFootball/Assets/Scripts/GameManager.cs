@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public float progress = 0;
     public MinigameInfo[] minigameInfos;
 
-    
+    public int streak = 0;
     public int individualScore = 0;
     public int[] totalScores;
     public string[] playerNames;
@@ -28,12 +28,50 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    public void ResetScoreStreak()
+    {
+        streak = 0;
+        IMinigameController.instance.streakBonusText.text = "";
+    }
+
     public void UpdateScore(int pointValue)
     {
-        totalScores[currentPlayer] += pointValue;
-        individualScore += pointValue;
+        //Calc Streak Bonus
+        int streakBonus = 0;
+
+        if(streak < 2)
+        {
+            IMinigameController.instance.streakBonusText.text = "";
+            streakBonus = 0;
+        }
+        else if(streak < 4)
+        {
+            streakBonus = 5;
+            IMinigameController.instance.streakBonusText.text = "+" + streakBonus.ToString();
+        }
+        else if (streak < 6)
+        {
+            streakBonus = 10;
+            IMinigameController.instance.streakBonusText.text = "+" + streakBonus.ToString();
+        }
+        else
+        {
+            streakBonus = 15;
+            IMinigameController.instance.streakBonusText.text = "+" + streakBonus.ToString();
+        }
+
+
+
+        //Calc Net Score
+        int calculatedScore = pointValue + streakBonus;
+
+        totalScores[currentPlayer] += calculatedScore;
+        individualScore += calculatedScore;
         IMinigameController.instance.scoreText.text = individualScore.ToString();
-        //Update Score Text Here
+
+
+        //Increase Streak
+        streak++;
     }
 
     public void StartSession()

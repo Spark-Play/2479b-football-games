@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3949551002287395816, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
       propertyPath: <pointValue>k__BackingField
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3949551002287395816, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
       propertyPath: 'targetVariants.Array.data[0]'

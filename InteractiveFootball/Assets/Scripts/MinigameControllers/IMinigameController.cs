@@ -14,6 +14,8 @@ public class IMinigameController : MonoBehaviour
     TMP_Text countdownText;
     [SerializeField]
     public TMP_Text scoreText;
+    [SerializeField]
+    public TMP_Text streakBonusText;
 
     void Awake()
     {
@@ -30,7 +32,7 @@ public class IMinigameController : MonoBehaviour
 
     public void StartMinigame()
     {
-        StartCoroutine(IStartTimer(2));
+        StartCoroutine(IStartTimer(60));
     }
 
 
@@ -103,9 +105,18 @@ public class IMinigameController : MonoBehaviour
                 // Option A: Classic Unity Message
                 //hit.collider.gameObject.SendMessage("OnObjectClicked", SendMessageOptions.DontRequireReceiver);
 
+
                 // Option B: Better practice (Interface or Component call)
-                hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit();
+                hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
             }
+            else
+            {
+                if(GameManager.instance != null) GameManager.instance.ResetScoreStreak();
+            }
+        }
+        else
+        {
+            if (GameManager.instance != null) GameManager.instance.ResetScoreStreak();
         }
     }
 

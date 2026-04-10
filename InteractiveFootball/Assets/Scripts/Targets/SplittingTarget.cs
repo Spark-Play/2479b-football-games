@@ -61,7 +61,7 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
         }
     }
 
-    public void OnHit()
+    public void OnHit(Vector3 hitPoint)
     {
         if(GameManager.instance != null) GameManager.instance.UpdateScore(pointValue);
         StartCoroutine(SpawnNewTargets());

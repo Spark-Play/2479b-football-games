@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecc5810a9dc486499db59ab569afb4d, type: 3}
+  m_Name: RushHour
+  m_EditorClassIdentifier: Assembly-CSharp::MinigameInfo
+  name: Rush Hour
+  subtitle: Defend Your Goal
+  description: "Objective: Stop shots from passing the line \u2022 Instruction point
+    1 \u2022 Instruction point 2 \u2022 Instruction point 3 Tip: Speed matters"
+  logo: {fileID: 21300000, guid: aa2084f5ae1b6d24ba5bd046385a1503, type: 3}
+  sceneName: RushHour

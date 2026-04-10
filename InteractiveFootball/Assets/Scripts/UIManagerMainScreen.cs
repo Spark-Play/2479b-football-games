@@ -142,6 +142,8 @@ public class UIManagerMainScreen : MonoBehaviour
         GameManager.instance.LoadMinigame();
         yield return new WaitForSeconds(0.5f);
 
+        GameManager.instance.ResetScoreStreak();
+
         mainScreens[currentScreen].SetActive(false);
 
         //IMinigameController.instance.MinigameIntro();

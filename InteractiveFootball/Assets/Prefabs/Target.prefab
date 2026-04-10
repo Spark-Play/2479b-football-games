@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3323a112329a4f4d8669fbc9d6bb210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SplittingTarget
+  <pointValue>k__BackingField: 10
   model: {fileID: 2326489021566175593}
   targetVariants:
   - {fileID: 2975462026853474705, guid: 1eadf8094517c754abd2f315c639491e, type: 3}
