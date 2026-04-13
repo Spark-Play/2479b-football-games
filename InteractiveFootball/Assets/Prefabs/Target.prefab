@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 3708882318912671177, guid: 4c87ffcf333d3594ca2fdb3a7a219b65, type: 3}
   - {fileID: 1686129377571933374, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
   - {fileID: 1686129377571933374, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
+  hitParticleEffect: {fileID: 550637641713192794, guid: 95851b7f3b9b7564c9046807ea3cb902, type: 3}
   safe: 0
 --- !u!135 &2101577445960283633
 SphereCollider:

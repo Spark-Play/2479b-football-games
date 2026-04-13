@@ -13,6 +13,10 @@ PrefabInstance:
       value: Large Target Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3949551002287395816, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
+      propertyPath: hitParticleEffect
+      value: 
+      objectReference: {fileID: 550637641713192794, guid: 95851b7f3b9b7564c9046807ea3cb902, type: 3}
+    - target: {fileID: 3949551002287395816, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
       propertyPath: targetVariants.Array.size
       value: 1
       objectReference: {fileID: 0}

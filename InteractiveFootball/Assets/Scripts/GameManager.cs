@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] public TcpJsonXYClient tcpJsonXYClient;
+
     public UIManagerMainScreen mainScreen;
     public UIManagerCompanionScreen companionScreen;
 

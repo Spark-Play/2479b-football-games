@@ -345,8 +345,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef5db7e8a305c044a85a755a227433c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTarget
-  <pointValue>k__BackingField: 10
+  <pointValue>k__BackingField: 20
   debugPoint: {fileID: 4728010835137512182, guid: 81c07d08fc5f2104c9a1a2166fce2808, type: 3}
+  hitParticleEffect: {fileID: 6665343560293125782, guid: 8d2ab1929baa8154bb800df076211b0d, type: 3}
+  redMat: {fileID: 2100000, guid: d182b6abbd985de4e8e3483013e998e9, type: 2}
 --- !u!54 &6099213018014633814
 Rigidbody:
   m_ObjectHideFlags: 0

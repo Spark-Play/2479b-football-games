@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,8 @@ public class IMinigameController : MonoBehaviour
     [SerializeField]
     public TMP_Text streakBonusText;
 
+    public static event Action OnMinigameStart;
+
     void Awake()
     {
         instance = this;
@@ -32,6 +35,7 @@ public class IMinigameController : MonoBehaviour
 
     public void StartMinigame()
     {
+        OnMinigameStart.Invoke();
         StartCoroutine(IStartTimer(60));
     }
 
@@ -88,6 +92,34 @@ public class IMinigameController : MonoBehaviour
     [SerializeField]
     Camera camera;
 
+
+
+    private void OnEnable()
+    {
+        GameManager.instance.tcpJsonXYClient.PositionReceived += HandlePosition;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.tcpJsonXYClient.PositionReceived -= HandlePosition;
+    }
+
+    private void HandlePosition(XYMessage message)
+    {
+        Debug.Log($"X: {message.x}, Y: {message.y}");
+
+        float xPct = message.x;
+        float yPct = message.y;
+
+        // Convert 0-1 range to actual pixel coordinates
+        float pixelX = xPct * Screen.width;
+        float pixelY = yPct * Screen.height;
+
+        Vector3 screenPoint = new Vector3(pixelX, pixelY, 0);
+
+        ShootUsingCoordinates(screenPoint);
+    }
+
     public void ShootUsingCoordinates(Vector2 screenCoordinates)
     {
         // 1. Create a ray from the camera to the mouse position
@@ -95,7 +127,7 @@ public class IMinigameController : MonoBehaviour
         RaycastHit hit;
 
         // 2. Shoot the ray and see if it hits a collider
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, 1000f))
         {
             // 3. Check for a specific tag or component
             if (hit.collider.CompareTag("Target"))
@@ -119,6 +151,8 @@ public class IMinigameController : MonoBehaviour
             if (GameManager.instance != null) GameManager.instance.ResetScoreStreak();
         }
     }
+
+
 
     // Update is called once per frame
     void Update()
