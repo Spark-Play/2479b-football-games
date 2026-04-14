@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RushHour.unity
     guid: a592312da59498244baa5f342bd579d9
+  - enabled: 1
+    path: Assets/Scenes/Woodwork.unity
+    guid: 55059d5d96707494da47feb730d209af
+  - enabled: 1
+    path: Assets/Scenes/TopBins.unity
+    guid: 78c2aa4cc0a66be4aba9a3905ceee7fd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

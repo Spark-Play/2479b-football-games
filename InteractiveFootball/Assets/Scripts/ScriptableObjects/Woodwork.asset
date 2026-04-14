@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eecc5810a9dc486499db59ab569afb4d, type: 3}
-  m_Name: TopBins
+  m_Name: Woodwork
   m_EditorClassIdentifier: Assembly-CSharp::MinigameInfo
-  name: Top Bins
-  subtitle: Precision is everything
-  description: "Objective: Hit the corner zones with precision \u2022 Instruction
-    point 1 \u2022 Instruction point 2 \u2022 Instruction point 3 Tip: Accuracy over
-    power"
+  name: Woodwork
+  subtitle: Pure skill
+  description: "Objective: Strike the crossbar consecutively \u2022 Instruction point
+    1 \u2022 Instruction point 2 \u2022 Instruction point 3 Tip: Build your streak
+    for multiplier"
   logo: {fileID: 21300000, guid: aa2084f5ae1b6d24ba5bd046385a1503, type: 3}
-  sceneName: TopBins
+  sceneName: Woodwork

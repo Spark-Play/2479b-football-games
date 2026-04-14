@@ -3,6 +3,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManagerMainScreen : MonoBehaviour
@@ -51,7 +52,7 @@ public class UIManagerMainScreen : MonoBehaviour
     }
 
 
-    int currentScreen = 0;
+    public int currentScreen = 0;
 
     public void NextScreen()
     {
@@ -151,7 +152,27 @@ public class UIManagerMainScreen : MonoBehaviour
 
     }
 
-    
+    public void EndGame()
+    {
+        StartCoroutine(IEndGame());
+    }
+
+
+    IEnumerator IEndGame()
+    {
+        NextScreen();
+        yield return new WaitForSeconds(2f);
+        NextScreen();
+        yield return new WaitForSeconds(2f);
+        NextScreen();
+        NextScreen();
+        NextScreen();
+        yield return new WaitForSeconds(2f);
+        NextScreen();
+        yield return new WaitForSeconds(2f);
+
+        SceneManager.LoadScene(0);
+    }
 
 
 }

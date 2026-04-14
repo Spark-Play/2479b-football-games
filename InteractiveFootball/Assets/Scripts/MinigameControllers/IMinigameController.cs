@@ -9,6 +9,9 @@ public class IMinigameController : MonoBehaviour
 
     public float countdownDelay = 0;
 
+    [HideInInspector]
+    public float secondSpeed = 1;
+
     [SerializeField]
     TMP_Text timerText;
     [SerializeField]
@@ -19,6 +22,8 @@ public class IMinigameController : MonoBehaviour
     public TMP_Text streakBonusText;
 
     public static event Action OnMinigameStart;
+
+    public bool canShoot = false;
 
     void Awake()
     {
@@ -35,8 +40,9 @@ public class IMinigameController : MonoBehaviour
 
     public void StartMinigame()
     {
+        canShoot = true;
         OnMinigameStart.Invoke();
-        StartCoroutine(IStartTimer(60));
+        StartCoroutine(IStartTimer(2));
     }
 
 
@@ -48,7 +54,7 @@ public class IMinigameController : MonoBehaviour
             int seconds = i % 60;
 
             timerText.text = $"{minutes:00}:{seconds:00}";
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(secondSpeed);
         }
 
         EndMinigame();
@@ -69,7 +75,7 @@ public class IMinigameController : MonoBehaviour
     IEnumerator IGetReadyCountdown(int countdownLength)
     {
 
-        yield return new WaitForSeconds(countdownDelay);
+        yield return new WaitForSeconds(countdownDelay- 6);
 
         for (int i = countdownLength; i > 0; i--)
         {
@@ -96,12 +102,12 @@ public class IMinigameController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.instance.tcpJsonXYClient.PositionReceived += HandlePosition;
+        if (GameManager.instance != null) GameManager.instance.tcpJsonXYClient.PositionReceived += HandlePosition;
     }
 
     private void OnDisable()
     {
-        GameManager.instance.tcpJsonXYClient.PositionReceived -= HandlePosition;
+        if (GameManager.instance != null) GameManager.instance.tcpJsonXYClient.PositionReceived -= HandlePosition;
     }
 
     private void HandlePosition(XYMessage message)
@@ -120,11 +126,21 @@ public class IMinigameController : MonoBehaviour
         ShootUsingCoordinates(screenPoint);
     }
 
+    public virtual void ShotTaken()
+    {
+
+    }
+
     public void ShootUsingCoordinates(Vector2 screenCoordinates)
     {
+        if(!canShoot) return;
         // 1. Create a ray from the camera to the mouse position
         Ray ray = camera.ScreenPointToRay(screenCoordinates);
         RaycastHit hit;
+
+        print("shoot");
+
+        ShotTaken();
 
         // 2. Shoot the ray and see if it hits a collider
         if (Physics.Raycast(ray, out hit, 1000f))

@@ -85,6 +85,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(IStartOverallTimer());
     }
 
+    bool timerEnded = false;
+
     IEnumerator IStartOverallTimer()
     {
         //yield return new WaitForSeconds(duration * 60);
@@ -106,7 +108,9 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-        EndGame();
+        timerEnded = true;
+
+        //EndGame();
     }
 
     public void BeginNewMinigame()
@@ -120,8 +124,14 @@ public class GameManager : MonoBehaviour
             UpdateAttributes();
             mainScreen.EndOfMinigame();
         }
-        if(currentPlayer >= playerCount-1)
+        else if(currentPlayer >= playerCount-1)
         {
+            if(timerEnded)
+            {
+                EndGame();
+                return;
+            }
+
             currentPlayer = 0;
             currentGamemode++;
             //CalculateProgress();
@@ -175,6 +185,8 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        mainScreen.EndGame();
+        companionScreen.NextScreen();
         print("endgame");
     }
 

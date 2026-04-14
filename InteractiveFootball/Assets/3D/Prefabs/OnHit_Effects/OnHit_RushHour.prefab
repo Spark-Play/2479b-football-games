@@ -9808,6 +9808,7 @@ GameObject:
   - component: {fileID: 7182089385840042588}
   - component: {fileID: 2355574258854057456}
   - component: {fileID: 7051014649850276242}
+  - component: {fileID: 4381064953398398264}
   m_Layer: 0
   m_Name: OnHit_RushHour
   m_TagString: Untagged
@@ -14713,6 +14714,19 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &4381064953398398264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6665343560293125782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44f838930bcee345925ff6571a66c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyAfterDelay
+  delay: 2
 --- !u!1 &8063313876408983954
 GameObject:
   m_ObjectHideFlags: 0
