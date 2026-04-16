@@ -42,7 +42,7 @@ public class IMinigameController : MonoBehaviour
     {
         canShoot = true;
         OnMinigameStart.Invoke();
-        StartCoroutine(IStartTimer(2));
+        StartCoroutine(IStartTimer(60));
     }
 
 
@@ -75,7 +75,7 @@ public class IMinigameController : MonoBehaviour
     IEnumerator IGetReadyCountdown(int countdownLength)
     {
 
-        yield return new WaitForSeconds(countdownDelay- 6);
+        yield return new WaitForSeconds(countdownDelay);
 
         for (int i = countdownLength; i > 0; i--)
         {

@@ -20,9 +20,12 @@ public class GameManager : MonoBehaviour
 
     public int streak = 0;
     public int individualScore = 0;
+    public int[] minigameScores;
     public int[] totalScores;
     public string[] playerNames;
     public int duration = 15;
+
+
 
     public static GameManager instance;
     private void Awake()
@@ -115,10 +118,19 @@ public class GameManager : MonoBehaviour
 
     public void BeginNewMinigame()
     {
+
+        minigameScores[currentPlayer] = individualScore;
+
         SceneManager.UnloadSceneAsync(minigameInfos[currentGamemode].sceneName);
 
         if(currentGamemode >= 3)
         {
+            if (timerEnded)
+            {
+                EndGame();
+                return;
+            }
+
             currentPlayer = 0;
             currentGamemode = 0;
             UpdateAttributes();
@@ -186,7 +198,6 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         mainScreen.EndGame();
-        companionScreen.NextScreen();
         print("endgame");
     }
 

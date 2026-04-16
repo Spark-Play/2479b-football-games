@@ -1,5 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -30,7 +33,12 @@ public class UIManagerMainScreen : MonoBehaviour
     [SerializeField]
     TMP_Text getReadyCountdown;
 
+    [Header("Misc")]
 
+    [SerializeField]
+    TMP_Text[] minigameLeaderboardEntries;
+    [SerializeField]
+    TMP_Text[] finalLeaderboardEntries;
 
     private MinigameInfo currentMinigameInfo;
 
@@ -67,8 +75,38 @@ public class UIManagerMainScreen : MonoBehaviour
         StartCoroutine(IEndOfMinigame());
     }
 
+
+    public Dictionary<string, int> sortedLeaderboard = new Dictionary<string, int>();
+
+
+    void SortAndUpdateLeaderboard(int[] scores, TMP_Text[] entries)
+    {
+        sortedLeaderboard.Clear();
+        for (int i = 0; i < GameManager.instance.playerCount; i++)
+        {
+            sortedLeaderboard.Add(GameManager.instance.playerNames[i], scores[i]);
+        }
+
+        sortedLeaderboard = sortedLeaderboard.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+        int index = 0;
+        foreach (var item in sortedLeaderboard)
+        {
+            entries[index].text = item.Key + " | " + item.Value.ToString();
+
+            //entries[index].text = "askjdhsakhdas";
+
+            index++;
+        }
+
+
+
+    }
+
     private IEnumerator IEndOfMinigame()
     {
+        SortAndUpdateLeaderboard(GameManager.instance.minigameScores, minigameLeaderboardEntries);
+
         NextScreen();
         yield return new WaitForSeconds(2f);
         NextScreen();
@@ -76,7 +114,7 @@ public class UIManagerMainScreen : MonoBehaviour
         NextScreen();
         NextScreen();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         FirstTimeMinigameTransition();
     }
      
@@ -160,15 +198,26 @@ public class UIManagerMainScreen : MonoBehaviour
 
     IEnumerator IEndGame()
     {
+
+        SortAndUpdateLeaderboard(GameManager.instance.minigameScores, minigameLeaderboardEntries);
+
         NextScreen();
         yield return new WaitForSeconds(2f);
         NextScreen();
         yield return new WaitForSeconds(2f);
+
+
+        SortAndUpdateLeaderboard(GameManager.instance.totalScores, finalLeaderboardEntries);
+
         NextScreen();
         NextScreen();
+
+        yield return new WaitForSeconds(5f);
         NextScreen();
-        yield return new WaitForSeconds(2f);
+        GameManager.instance.companionScreen.EndGame(sortedLeaderboard);
+        yield return new WaitForSeconds(5f);
         NextScreen();
+
         yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene(0);

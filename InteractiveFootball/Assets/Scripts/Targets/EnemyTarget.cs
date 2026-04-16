@@ -62,7 +62,7 @@ public class EnemyTarget : MonoBehaviour, ITargetHandler
         Vector3 targetPos = new Vector3(0, 0, -7);
 
         // Move slowly toward the target
-        Vector3 newPos = Vector3.MoveTowards(currentPos, targetPos, 1 * Time.fixedDeltaTime);
+        Vector3 newPos = Vector3.MoveTowards(currentPos, targetPos, 0.6f * Time.fixedDeltaTime);
 
         rb.MovePosition(newPos);
     }

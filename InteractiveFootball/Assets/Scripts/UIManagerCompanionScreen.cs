@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.Hierarchy;
 using UnityEngine;
@@ -88,5 +90,13 @@ public class UIManagerCompanionScreen : MonoBehaviour
         companionScreens[currentScreen].SetActive(true);
     }
 
+
+    public void EndGame(Dictionary<string, int> sortedLeaderboard)
+    {
+        NextScreen();
+
+        sessionWinner.text = "Winner: " + sortedLeaderboard.First().Key;
+        sessionTotalScore.text = "Total Score: " + sortedLeaderboard.First().Value.ToString();
+    }
 
 }
