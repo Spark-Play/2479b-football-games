@@ -4841,11 +4841,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6081113759677901486, guid: f537d6d346c3c3448ae1eccafdd14b27, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.83
+      value: 3.92
       objectReference: {fileID: 0}
     - target: {fileID: 6081113759677901486, guid: f537d6d346c3c3448ae1eccafdd14b27, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.51
+      value: 9.46
       objectReference: {fileID: 0}
     - target: {fileID: 6081113759677901486, guid: f537d6d346c3c3448ae1eccafdd14b27, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4881,7 +4881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6858881156182913044, guid: f537d6d346c3c3448ae1eccafdd14b27, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6932,7 +6932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolumePerSceneData
   serializedBakingSet: {fileID: 11400000, guid: dac7e04191ccfd04ab1dd4df115727a6, type: 2}
-  sceneGUID: 78c2aa4cc0a66be4aba9a3905ceee7fd
+  sceneGUID: 1dd75cad414361b4ead4d39b206174db
   obsoleteAsset: {fileID: 0}
   obsoleteCellSharedDataAsset: {fileID: 0}
   obsoleteCellSupportDataAsset: {fileID: 0}

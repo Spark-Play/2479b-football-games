@@ -39,6 +39,22 @@ public class GameManager : MonoBehaviour
         IMinigameController.instance.streakBonusText.text = "";
     }
 
+    public void UpdateScoreCancelStreak(int pointValue)
+    {
+        //Reset Streak
+        streak = 0;
+        IMinigameController.instance.streakBonusText.text = "";
+
+
+
+        //Calc Net Score
+        int calculatedScore = pointValue;
+
+        totalScores[currentPlayer] += calculatedScore;
+        individualScore += calculatedScore;
+        IMinigameController.instance.scoreText.text = individualScore.ToString();
+    }
+
     public void UpdateScore(int pointValue)
     {
         //Calc Streak Bonus

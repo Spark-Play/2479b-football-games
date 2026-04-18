@@ -12,6 +12,8 @@ public class StaticTarget : MonoBehaviour, ITargetHandler
 
     bool checkDelete = true;
 
+    public bool cancelStreak = false;
+
     void OnEnable()
     {
         SmashTheWallMinigameController.OnMinigameStart += MinigameStart;
@@ -41,7 +43,14 @@ public class StaticTarget : MonoBehaviour, ITargetHandler
     {
         if (!canHit) return;
         Instantiate(hitParticleEffect, new Vector3(hitPoint.x, hitPoint.y, transform.position.z), Quaternion.identity);
-        if (GameManager.instance != null) GameManager.instance.UpdateScore(pointValue);
+        if(cancelStreak == false)
+        {
+            if (GameManager.instance != null) GameManager.instance.UpdateScore(pointValue);
+        }
+        else
+        {
+            if (GameManager.instance != null) GameManager.instance.UpdateScoreCancelStreak(pointValue);
+        }
     }
 
 
