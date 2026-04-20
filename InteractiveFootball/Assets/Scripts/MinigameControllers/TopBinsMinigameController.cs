@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class TopBinsMinigameController : IMinigameController
 {
+
+
     [SerializeField]
     GameObject[] targetRounds;
 

@@ -21,9 +21,41 @@ public class IMinigameController : MonoBehaviour
     [SerializeField]
     public TMP_Text streakBonusText;
 
+    [SerializeField]
+    GameObject[] hitEffects;
+
     public static event Action OnMinigameStart;
 
     public bool canShoot = false;
+
+
+
+    public Cloth goalNet;
+
+
+    public void AttachToNet(SphereCollider collider)
+    {
+        // 1. Get the current list of sphere pairs
+        ClothSphereColliderPair[] currentPairs = goalNet.sphereColliders;
+
+        // 2. Create a new array with one extra slot
+        ClothSphereColliderPair[] newPairs = new ClothSphereColliderPair[currentPairs.Length + 1];
+
+        // 3. Copy the old pairs to the new array
+        for (int i = 0; i < currentPairs.Length; i++)
+        {
+            newPairs[i] = currentPairs[i];
+        }
+
+        // 4. Create the new pair and add it to the last slot
+        ClothSphereColliderPair myPair = new ClothSphereColliderPair();
+        myPair.first = collider; // You can also set .second for a conical collision
+        newPairs[newPairs.Length - 1] = myPair;
+
+        // 5. Reassign the array back to the cloth component
+        goalNet.sphereColliders = newPairs;
+    }
+
 
     void Awake()
     {
@@ -136,36 +168,52 @@ public class IMinigameController : MonoBehaviour
         if(!canShoot) return;
         // 1. Create a ray from the camera to the mouse position
         Ray ray = camera.ScreenPointToRay(screenCoordinates);
-        RaycastHit hit;
 
         print("shoot");
 
         ShotTaken();
 
-        // 2. Shoot the ray and see if it hits a collider
-        if (Physics.Raycast(ray, out hit, 1000f))
+        RaycastHit[] hits = Physics.RaycastAll(ray, 1000f);
+
+        bool hitAnyTarget = false;
+
+        foreach (RaycastHit hit in hits)
         {
-            // 3. Check for a specific tag or component
-            if (hit.collider.CompareTag("Target"))
-            {
-                //Debug.Log("Hit the specific object!");
+                // 3. Check for a specific tag or component
+                if (hitAnyTarget == false &&  (hit.collider.CompareTag("Target") || hit.collider.CompareTag("Debris")))
+                {
+                    //Debug.Log("Hit the specific object!");
 
-                // Option A: Classic Unity Message
-                //hit.collider.gameObject.SendMessage("OnObjectClicked", SendMessageOptions.DontRequireReceiver);
+                    // Option A: Classic Unity Message
+                    //hit.collider.gameObject.SendMessage("OnObjectClicked", SendMessageOptions.DontRequireReceiver);
 
 
-                // Option B: Better practice (Interface or Component call)
-                hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
-            }
-            else
-            {
-                if(GameManager.instance != null) GameManager.instance.ResetScoreStreak();
-            }
+                    // Option B: Better practice (Interface or Component call)
+                    hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
+
+                hitAnyTarget = true;
+                }
+                else
+                {
+                    if (GameManager.instance != null) GameManager.instance.ResetScoreStreak();
+                }
+
+
+                if (hit.collider.CompareTag("BrickArea"))
+                {
+                    Instantiate(hitEffects[0], new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
+                }
+                else if (hit.collider.CompareTag("NetArea"))
+                {
+                    Instantiate(hitEffects[1], new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
+                }
         }
-        else
+
+        if(!hitAnyTarget)
         {
             if (GameManager.instance != null) GameManager.instance.ResetScoreStreak();
         }
+
     }
 
 

@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3401107622489719512, guid: 2a6d278e28107f045814f036e4c3aff4, type: 3}
       propertyPath: m_TagString
-      value: Target
+      value: Debris
       objectReference: {fileID: 0}
     - target: {fileID: 5253453933644909141, guid: 2a6d278e28107f045814f036e4c3aff4, type: 3}
       propertyPath: m_Size.x

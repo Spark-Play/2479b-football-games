@@ -82,7 +82,7 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
     public void OnHit(Vector3 hitPoint)
     {
         if (!canHit) return;
-        Instantiate(hitParticleEffect, new Vector3(hitPoint.x, hitPoint.y, transform.position.z), Quaternion.identity);
+        //Instantiate(hitParticleEffect, new Vector3(hitPoint.x, hitPoint.y, transform.position.z), Quaternion.identity);
         if (GameManager.instance != null) GameManager.instance.UpdateScore(pointValue);
         StartCoroutine(SpawnNewTargets());
     }
@@ -101,7 +101,7 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
 
             GameObject targetObject = Instantiate(targetVariants[Random.Range(0,targetVariants.Length)], transform.parent);
             targetObject.GetComponent<SplittingTarget>().safe = false;
-            targetObject.transform.localPosition = new Vector3(transform.localPosition.x + Random.Range(-2.1f,2.1f), transform.localPosition.y + Random.Range(-1.1f, 1.1f), 0f);
+            targetObject.transform.localPosition = new Vector3(transform.localPosition.x + Random.Range(-2.1f,2.1f), transform.localPosition.y + Random.Range(-1.8f, 1.8f), 0f);
         }
 
         Destroy(gameObject);
