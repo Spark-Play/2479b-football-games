@@ -182,11 +182,11 @@ public class GameManager : MonoBehaviour
 
     public static event Action OnUpdateAttributes;
 
-    void UpdateAttributes()
+    public void UpdateAttributes()
     {
         //companionScreen.UpdateMinigameScreen();
         mainScreen.UpdateAttributes();
-        OnUpdateAttributes.Invoke();
+        OnUpdateAttributes?.Invoke();
     }
 
     void CalculateProgress()

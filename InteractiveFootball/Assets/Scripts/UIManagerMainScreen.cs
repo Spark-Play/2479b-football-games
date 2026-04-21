@@ -13,6 +13,9 @@ public class UIManagerMainScreen : MonoBehaviour
 {
 
     [SerializeField]
+    GameObject[] playerCells;
+
+    [SerializeField]
     GameObject[] mainScreens;
 
     [Header("Dynamic Attributes")]
@@ -44,6 +47,11 @@ public class UIManagerMainScreen : MonoBehaviour
 
     public void UpdateAttributes()
     {
+        for (int i = 0; i < GameManager.instance.playerCount; i++)
+        {
+            playerCells[i].SetActive(true);
+        }
+
         currentMinigameInfo = GameManager.instance.minigameInfos[GameManager.instance.currentGamemode];
 
         //instructionsTitle.text = currentMinigameInfo.name;
@@ -144,7 +152,7 @@ public class UIManagerMainScreen : MonoBehaviour
     IEnumerator IFirstTimeMinigameTransition()
     {
         mainScreens[currentScreen].SetActive(false);
-        currentScreen = 0;
+        currentScreen = 1;
 
         NextScreen();
         yield return new WaitForSeconds(2f);

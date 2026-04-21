@@ -3246,6 +3246,7 @@ MonoBehaviour:
   hitEffects:
   - {fileID: 550637641713192794, guid: 95851b7f3b9b7564c9046807ea3cb902, type: 3}
   canShoot: 0
+  goalNet: {fileID: 0}
   camera: {fileID: 1430227156}
   riveWidget: {fileID: 2037720395}
 --- !u!1001 &444558937

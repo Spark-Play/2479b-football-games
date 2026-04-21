@@ -5,6 +5,8 @@ using UnityEngine;
 public class AutoUpdatedText : MonoBehaviour
 {
 
+    public int indexOverride = -1;
+
     public string textFormat;
 
     public enum TextType { playerName, minigameName, totalScore, individualScore };
@@ -31,14 +33,17 @@ public class AutoUpdatedText : MonoBehaviour
 
         if(textType == TextType.playerName)
         {
-            text = GameManager.instance.playerNames[GameManager.instance.currentPlayer];
+            int index = (indexOverride != -1) ? indexOverride : GameManager.instance.currentPlayer;
+            text = GameManager.instance.playerNames[index];
         }
         else if(textType == TextType.minigameName)
         {
+            int index = (indexOverride != -1) ? indexOverride : GameManager.instance.currentGamemode;
             text = GameManager.instance.minigameInfos[GameManager.instance.currentGamemode].name;
         }
         else if (textType == TextType.totalScore)
         {
+            int index = (indexOverride != -1) ? indexOverride : GameManager.instance.currentPlayer;
             text = GameManager.instance.totalScores[GameManager.instance.currentPlayer].ToString();
         }
         else if (textType == TextType.individualScore)
