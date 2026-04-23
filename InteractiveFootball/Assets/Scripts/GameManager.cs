@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public string[] playerNames;
     public int duration = 15;
 
+    [SerializeField]
+    public Color[] playerColours;
 
 
     public static GameManager instance;

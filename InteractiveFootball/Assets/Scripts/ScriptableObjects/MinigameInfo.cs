@@ -7,7 +7,7 @@ public class MinigameInfo : ScriptableObject
 {
     public string name;
     public string subtitle;
-    public string description;
+    public Sprite description;
     public Sprite logo;
     public string sceneName;
 }

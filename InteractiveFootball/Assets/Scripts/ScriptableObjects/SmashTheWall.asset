@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MinigameInfo
   name: Smash The Wall
   subtitle: Destruction Awaits
-  description: "Objective: Destroy as many targets as possible \u2022 Instruction
-    point 1 \u2022 Instruction point 2 \u2022 Instruction point 3 Tip: Aim for weak
-    points for bonus"
-  logo: {fileID: 21300000, guid: aa2084f5ae1b6d24ba5bd046385a1503, type: 3}
+  description: {fileID: 21300000, guid: 59f3449a2b861554aa2c8cd6744db58c, type: 3}
+  logo: {fileID: 21300000, guid: de07616c065ba394f80010ade338a9c5, type: 3}
   sceneName: SmashTheWall

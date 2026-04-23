@@ -21,7 +21,7 @@ public class UIManagerMainScreen : MonoBehaviour
     [Header("Dynamic Attributes")]
     [Header("Instructions")]
     [SerializeField]
-    TMP_Text instructionsObjective;
+    Image instructionsObjective;
 
     [Header("TitleCard")]
     [SerializeField]
@@ -32,9 +32,7 @@ public class UIManagerMainScreen : MonoBehaviour
 
     [Header("GetReady")]
     [SerializeField]
-    TMP_Text getReadySubtitle;
-    [SerializeField]
-    TMP_Text getReadyCountdown;
+    Image getReadyPlayerCell;
 
     [Header("Misc")]
 
@@ -54,8 +52,10 @@ public class UIManagerMainScreen : MonoBehaviour
 
         currentMinigameInfo = GameManager.instance.minigameInfos[GameManager.instance.currentGamemode];
 
+        getReadyPlayerCell.color = GameManager.instance.playerColours[GameManager.instance.currentPlayer];
+
         //instructionsTitle.text = currentMinigameInfo.name;
-        instructionsObjective.text = currentMinigameInfo.description;
+        instructionsObjective.sprite = currentMinigameInfo.description;
         //instructionsFirstUp.text = "First Up: " + GameManager.instance.playerNames[GameManager.instance.currentPlayer];
 
         //titleCardTitle.text = currentMinigameInfo.name;
@@ -74,6 +74,13 @@ public class UIManagerMainScreen : MonoBehaviour
     {
         mainScreens[currentScreen].SetActive(false);
         currentScreen++;
+        mainScreens[currentScreen].SetActive(true);
+    }
+
+    public void SetScreen(int index)
+    {
+        mainScreens[currentScreen].SetActive(false);
+        currentScreen = index;
         mainScreens[currentScreen].SetActive(true);
     }
 
@@ -133,12 +140,15 @@ public class UIManagerMainScreen : MonoBehaviour
 
     private IEnumerator IEndOfPlayerTurn()
     {
+        //Time!
         NextScreen();
         yield return new WaitForSeconds(2f);
+        //Retrieve Balls
         NextScreen();
         yield return new WaitForSeconds(2f);
-        NextScreen();
-        yield return new WaitForSeconds(2f);
+
+        //NextScreen();
+        //yield return new WaitForSeconds(2f);
 
         MinigameTransition();
 
@@ -152,17 +162,13 @@ public class UIManagerMainScreen : MonoBehaviour
     IEnumerator IFirstTimeMinigameTransition()
     {
         mainScreens[currentScreen].SetActive(false);
-        currentScreen = 1;
 
-        NextScreen();
+        //Objectives Screen
+        SetScreen(3);
         yield return new WaitForSeconds(2f);
 
+        //Logo Screen
         NextScreen();
-
-        yield return new WaitForSeconds(2f);
-
-        NextScreen();
-
         yield return new WaitForSeconds(2f);
 
         MinigameTransition();
@@ -177,19 +183,26 @@ public class UIManagerMainScreen : MonoBehaviour
     IEnumerator IMinigameTransition()
     {
 
-        mainScreens[currentScreen].SetActive(false);
+        //mainScreens[currentScreen].SetActive(false);
 
         GameManager.instance.individualScore = 0;
 
-        currentScreen = 3;
 
-        NextScreen();
 
-        yield return new WaitForSeconds(1.5f);
         GameManager.instance.LoadMinigame();
-        yield return new WaitForSeconds(0.5f);
 
+
+        yield return new WaitForSeconds(0.8f);
+
+
+        mainScreens[currentScreen].SetActive(false);
+        //Logo Screen
+        SetScreen(5);
         GameManager.instance.ResetScoreStreak();
+
+
+
+        yield return new WaitForSeconds(5f);
 
         mainScreens[currentScreen].SetActive(false);
 

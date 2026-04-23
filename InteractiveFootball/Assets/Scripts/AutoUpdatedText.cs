@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AutoUpdatedText : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class AutoUpdatedText : MonoBehaviour
 
     public string textFormat;
 
-    public enum TextType { playerName, minigameName, totalScore, individualScore };
+    public enum TextType { playerName, playerNumber, minigameName, totalScore, individualScore, minigameLogo };
 
     public TextType textType;
 
@@ -39,20 +40,29 @@ public class AutoUpdatedText : MonoBehaviour
         else if(textType == TextType.minigameName)
         {
             int index = (indexOverride != -1) ? indexOverride : GameManager.instance.currentGamemode;
-            text = GameManager.instance.minigameInfos[GameManager.instance.currentGamemode].name;
+            text = GameManager.instance.minigameInfos[index].name;
         }
         else if (textType == TextType.totalScore)
         {
             int index = (indexOverride != -1) ? indexOverride : GameManager.instance.currentPlayer;
-            text = GameManager.instance.totalScores[GameManager.instance.currentPlayer].ToString();
+            text = GameManager.instance.totalScores[index].ToString();
+        }
+        else if (textType == TextType.playerNumber)
+        {
+            int index = (indexOverride != -1) ? indexOverride : GameManager.instance.currentPlayer+1;
+            text = index.ToString();
         }
         else if (textType == TextType.individualScore)
         {
             text = GameManager.instance.individualScore.ToString();
         }
 
-
-        if (textFormat == "")
+        if(textType == TextType.minigameLogo)
+        {
+            int index = (indexOverride != -1) ? indexOverride : GameManager.instance.currentGamemode;
+            GetComponent<Image>().sprite = GameManager.instance.minigameInfos[index].logo;
+        }
+        else if (textFormat == "")
         {
             GetComponent<TMP_Text>().text = text;
         }

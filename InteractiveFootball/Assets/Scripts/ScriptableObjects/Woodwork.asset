@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Woodwork
   m_EditorClassIdentifier: Assembly-CSharp::MinigameInfo
   name: Woodwork
-  subtitle: Pure skill
-  description: "Objective: Strike the crossbar consecutively \u2022 Instruction point
-    1 \u2022 Instruction point 2 \u2022 Instruction point 3 Tip: Build your streak
-    for multiplier"
-  logo: {fileID: 21300000, guid: aa2084f5ae1b6d24ba5bd046385a1503, type: 3}
+  subtitle: Crossbar Challenge
+  description: {fileID: 21300000, guid: 59f3449a2b861554aa2c8cd6744db58c, type: 3}
+  logo: {fileID: 21300000, guid: 4c7631e20a0750249a5ce625adc3c967, type: 3}
   sceneName: Woodwork

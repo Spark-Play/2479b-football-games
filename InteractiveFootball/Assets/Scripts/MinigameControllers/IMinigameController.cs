@@ -74,7 +74,7 @@ public class IMinigameController : MonoBehaviour
     {
         canShoot = true;
         OnMinigameStart.Invoke();
-        StartCoroutine(IStartTimer(60));
+        StartCoroutine(IStartTimer(6));
     }
 
 
