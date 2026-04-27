@@ -60,6 +60,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4787609274133873450}
   m_SourcePrefab: {fileID: 100100000, guid: b8b93800037b8574c9bf761404b5d59d, type: 3}
+--- !u!23 &4896906416559489831 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9051845259109269550, guid: b8b93800037b8574c9bf761404b5d59d, type: 3}
+  m_PrefabInstance: {fileID: 4497920912047145737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6034369042893240392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7914427157627861825, guid: b8b93800037b8574c9bf761404b5d59d, type: 3}
@@ -99,6 +104,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 412420078888913832, guid: 2a6d278e28107f045814f036e4c3aff4, type: 3}
+      propertyPath: mr
+      value: 
+      objectReference: {fileID: 4896906416559489831}
     - target: {fileID: 2999070194707755904, guid: 2a6d278e28107f045814f036e4c3aff4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.865
