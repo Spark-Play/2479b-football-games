@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3949551002287395816, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
       propertyPath: <pointValue>k__BackingField
-      value: 15
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3949551002287395816, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
       propertyPath: 'targetVariants.Array.data[1]'
@@ -30,15 +30,15 @@ PrefabInstance:
       objectReference: {fileID: 1686129377571933374, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
     - target: {fileID: 8996980867955077609, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8996980867955077609, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8996980867955077609, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8996980867955077609, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
       propertyPath: m_LocalPosition.x

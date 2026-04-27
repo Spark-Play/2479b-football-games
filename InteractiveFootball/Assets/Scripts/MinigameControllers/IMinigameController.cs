@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -70,8 +71,12 @@ public class IMinigameController : MonoBehaviour
         GetReadyCountdown();
     }
 
-    public void StartMinigame()
+    public virtual void StartMinigame()
     {
+        timerText.gameObject.SetActive(true);
+        streakBonusText.transform.parent.gameObject.SetActive(true);
+        scoreText.transform.parent.gameObject.SetActive(true);
+
         canShoot = true;
         OnMinigameStart.Invoke();
         StartCoroutine(IStartTimer(6));
@@ -163,6 +168,9 @@ public class IMinigameController : MonoBehaviour
 
     }
 
+
+    public bool hitAnyTarget = false;
+
     public void ShootUsingCoordinates(Vector2 screenCoordinates)
     {
         if(!canShoot) return;
@@ -175,12 +183,16 @@ public class IMinigameController : MonoBehaviour
 
         RaycastHit[] hits = Physics.RaycastAll(ray, 1000f);
 
-        bool hitAnyTarget = false;
+        hitAnyTarget = false;
 
-        foreach (RaycastHit hit in hits)
+
+        foreach (RaycastHit hit in hits.Reverse())
         {
-                // 3. Check for a specific tag or component
-                if (hitAnyTarget == false &&  (hit.collider.CompareTag("Target") || hit.collider.CompareTag("Debris")))
+            // 3. Check for a specific tag or component
+
+            if (hitAnyTarget == false)
+            {
+                if ((hit.collider.CompareTag("Target") || hit.collider.CompareTag("Debris")))
                 {
                     //Debug.Log("Hit the specific object!");
 
@@ -191,22 +203,27 @@ public class IMinigameController : MonoBehaviour
                     // Option B: Better practice (Interface or Component call)
                     hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
 
-                hitAnyTarget = true;
+                    hitAnyTarget = true;
+
+                    print("hit target");
                 }
                 else
                 {
                     if (GameManager.instance != null) GameManager.instance.ResetScoreStreak();
+                    Instantiate(hitEffects[0], new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
                 }
-
+            }
 
                 if (hit.collider.CompareTag("BrickArea"))
                 {
-                    Instantiate(hitEffects[0], new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
-                }
+                    //Instantiate(hitEffects[0], new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
+                hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
+            }
                 else if (hit.collider.CompareTag("NetArea"))
                 {
-                    Instantiate(hitEffects[1], new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
-                }
+                    //Instantiate(hitEffects[1], new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
+                hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
+            }
         }
 
         if(!hitAnyTarget)

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MinigameInfo
   name: Top Bins
   subtitle: Find Those Pockets
-  description: {fileID: 21300000, guid: 59f3449a2b861554aa2c8cd6744db58c, type: 3}
+  description: {fileID: 21300000, guid: b3527ec6db839974197f66a4c1025d5f, type: 3}
   logo: {fileID: 21300000, guid: d18e359b17b516643b3197ab8716b642, type: 3}
   sceneName: TopBins

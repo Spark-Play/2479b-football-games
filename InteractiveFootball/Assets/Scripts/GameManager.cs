@@ -37,16 +37,26 @@ public class GameManager : MonoBehaviour
 
     public void ResetScoreStreak()
     {
-        streak = 0;
-        IMinigameController.instance.streakBonusText.text = "";
+        if (IMinigameController.instance.hitAnyTarget == false)
+        {
+            print("reset score streak");
+
+            streak = 0;
+            IMinigameController.instance.streakBonusText.text = streak.ToString();
+        }
     }
 
     public void UpdateScoreCancelStreak(int pointValue)
     {
-        //Reset Streak
-        streak = 0;
-        IMinigameController.instance.streakBonusText.text = "";
 
+
+        //Reset Streak
+        if (IMinigameController.instance.hitAnyTarget == false)
+        {
+            print("upreset score streak");
+            streak = 0;
+            IMinigameController.instance.streakBonusText.text = streak.ToString();
+        }
 
 
         //Calc Net Score
@@ -62,25 +72,22 @@ public class GameManager : MonoBehaviour
         //Calc Streak Bonus
         int streakBonus = 0;
 
+
         if(streak < 2)
         {
-            IMinigameController.instance.streakBonusText.text = "";
             streakBonus = 0;
         }
         else if(streak < 4)
         {
             streakBonus = 5;
-            IMinigameController.instance.streakBonusText.text = "+" + streakBonus.ToString();
         }
         else if (streak < 6)
         {
             streakBonus = 10;
-            IMinigameController.instance.streakBonusText.text = "+" + streakBonus.ToString();
         }
         else
         {
             streakBonus = 15;
-            IMinigameController.instance.streakBonusText.text = "+" + streakBonus.ToString();
         }
 
 
@@ -95,6 +102,11 @@ public class GameManager : MonoBehaviour
 
         //Increase Streak
         streak++;
+
+        IMinigameController.instance.streakBonusText.text = streak.ToString();
+
+
+        print(streak);
     }
 
     public void StartSession()

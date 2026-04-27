@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MinigameInfo
   name: Smash The Wall
   subtitle: Destruction Awaits
-  description: {fileID: 21300000, guid: 59f3449a2b861554aa2c8cd6744db58c, type: 3}
+  description: {fileID: 21300000, guid: 7f255ccc2969ca84e9a6af2862e5b890, type: 3}
   logo: {fileID: 21300000, guid: de07616c065ba394f80010ade338a9c5, type: 3}
   sceneName: SmashTheWall

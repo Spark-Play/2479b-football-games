@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ffe49df7acc3ae4bb7de9c4e78af880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebrisTarget
-  <pointValue>k__BackingField: 10
+  <pointValue>k__BackingField: 15
   hitParticleEffect: {fileID: 6665343560293125782, guid: 8d2ab1929baa8154bb800df076211b0d, type: 3}
   forceStrength: 2
   mr: {fileID: 0}

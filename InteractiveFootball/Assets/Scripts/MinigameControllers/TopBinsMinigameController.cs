@@ -19,6 +19,12 @@ public class TopBinsMinigameController : IMinigameController
 
     public int round = 0;
 
+    public override void StartMinigame()
+    {
+        base.StartMinigame();
+        shotsLeftDisplay[0].transform.parent.parent.gameObject.SetActive(true);
+    }
+
     public override void ShotTaken()
     {
 

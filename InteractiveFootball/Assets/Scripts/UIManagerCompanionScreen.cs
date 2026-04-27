@@ -91,11 +91,11 @@ public class UIManagerCompanionScreen : MonoBehaviour
     }
 
 
-    public void EndGame(Dictionary<string, int> sortedLeaderboard)
+    public void EndGame(Dictionary<int, int> sortedLeaderboard)
     {
         NextScreen();
 
-        sessionWinner.text = "Winner: " + sortedLeaderboard.First().Key;
+        sessionWinner.text = "Winner: " + GameManager.instance.playerNames[sortedLeaderboard.First().Key];
         sessionTotalScore.text = "Total Score: " + sortedLeaderboard.First().Value.ToString();
     }
 

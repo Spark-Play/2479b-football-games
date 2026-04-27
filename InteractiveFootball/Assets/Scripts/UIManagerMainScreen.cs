@@ -91,7 +91,7 @@ public class UIManagerMainScreen : MonoBehaviour
     }
 
 
-    public Dictionary<string, int> sortedLeaderboard = new Dictionary<string, int>();
+    public Dictionary<int, int> sortedLeaderboard = new Dictionary<int, int>();
 
 
     void SortAndUpdateLeaderboard(int[] scores, TMP_Text[] entries)
@@ -99,7 +99,7 @@ public class UIManagerMainScreen : MonoBehaviour
         sortedLeaderboard.Clear();
         for (int i = 0; i < GameManager.instance.playerCount; i++)
         {
-            sortedLeaderboard.Add(GameManager.instance.playerNames[i], scores[i]);
+            sortedLeaderboard.Add(i, scores[i]);
         }
 
         sortedLeaderboard = sortedLeaderboard.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
@@ -107,7 +107,9 @@ public class UIManagerMainScreen : MonoBehaviour
         int index = 0;
         foreach (var item in sortedLeaderboard)
         {
-            entries[index].text = item.Key + " | " + item.Value.ToString();
+            entries[index].color = GameManager.instance.playerColours[item.Key];
+
+            entries[index].text = "P" + (item.Key+1).ToString() + " " + GameManager.instance.playerNames[item.Key].Replace(" ", "") + " " + item.Value.ToString();
 
             //entries[index].text = "askjdhsakhdas";
 
