@@ -72,14 +72,32 @@ public class TopBinsMinigameController : IMinigameController
         }
         else
         {
-            //End Minigame
+            //Loop Minigame
+
+            round = 0;
+
+            shotsLeft = 3;
+
+            for (int i = 0; i < shotsLeftDisplay.Length; i++)
+            {
+                shotsLeftDisplay[i].enabled = true;
+            }
 
             for (int i = 0; i < targetRounds.Length; i++)
             {
-                targetRounds[i].SetActive(false);
+                targetRounds[i].SetActive(i == round);
+
+                foreach (Transform target in targetRounds[i].transform)
+                {
+                    target.gameObject.SetActive(true);
+                }
+
             }
 
-            secondSpeed = 0.05f;
+
+            canShoot = true;
+
+            //secondSpeed = 0.05f;
         }
 
 

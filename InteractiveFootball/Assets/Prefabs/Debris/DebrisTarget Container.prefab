@@ -8,9 +8,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4876161156501486135}
     m_Modifications:
+    - target: {fileID: 7664233709131428226, guid: c04034a0113b28140a0ec39bd52416b7, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8168456066698694743, guid: c04034a0113b28140a0ec39bd52416b7, type: 3}
       propertyPath: m_Name
       value: PlasticContainer01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168456066698694743, guid: c04034a0113b28140a0ec39bd52416b7, type: 3}
+      propertyPath: m_TagString
+      value: Debris
       objectReference: {fileID: 0}
     - target: {fileID: 8797780975229962989, guid: c04034a0113b28140a0ec39bd52416b7, type: 3}
       propertyPath: m_LocalPosition.x

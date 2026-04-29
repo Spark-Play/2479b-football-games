@@ -79,7 +79,7 @@ public class IMinigameController : MonoBehaviour
 
         canShoot = true;
         OnMinigameStart.Invoke();
-        StartCoroutine(IStartTimer(6));
+        StartCoroutine(IStartTimer(60));
     }
 
 
@@ -183,10 +183,12 @@ public class IMinigameController : MonoBehaviour
 
         RaycastHit[] hits = Physics.RaycastAll(ray, 1000f);
 
+        hits = hits.OrderBy(h => h.distance).ToArray();
+
         hitAnyTarget = false;
 
 
-        foreach (RaycastHit hit in hits.Reverse())
+        foreach (RaycastHit hit in hits)
         {
             // 3. Check for a specific tag or component
 

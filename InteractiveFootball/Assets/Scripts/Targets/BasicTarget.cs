@@ -43,12 +43,12 @@ public class BasicTarget : MonoBehaviour, ITargetHandler
         if (!canHit) return;
         Instantiate(hitParticleEffect, new Vector3(hitPoint.x, hitPoint.y, transform.position.z), Quaternion.identity);
         if (GameManager.instance != null) GameManager.instance.UpdateScore(pointValue);
-        StartCoroutine(DestroySequence());
+        StartCoroutine(HideSequence());
     }
-    IEnumerator DestroySequence()
+    IEnumerator HideSequence()
     {
         yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 }

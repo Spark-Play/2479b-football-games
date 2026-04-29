@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OldBrick01
       objectReference: {fileID: 0}
+    - target: {fileID: 7394454556461801979, guid: b8b93800037b8574c9bf761404b5d59d, type: 3}
+      propertyPath: m_TagString
+      value: Debris
+      objectReference: {fileID: 0}
     - target: {fileID: 7914427157627861825, guid: b8b93800037b8574c9bf761404b5d59d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,6 +54,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7914427157627861825, guid: b8b93800037b8574c9bf761404b5d59d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051845259109269550, guid: b8b93800037b8574c9bf761404b5d59d, type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

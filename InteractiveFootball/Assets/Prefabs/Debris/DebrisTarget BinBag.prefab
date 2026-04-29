@@ -61,6 +61,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: fcc5c4caf9738ac499ece4eff888bed8, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fcc5c4caf9738ac499ece4eff888bed8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8f48dbc357084594a8eb064f725d3123, type: 2}
@@ -70,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fcc5c4caf9738ac499ece4eff888bed8, type: 3}
       propertyPath: m_TagString
-      value: Target
+      value: Debris
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fcc5c4caf9738ac499ece4eff888bed8, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -179,6 +183,10 @@ PrefabInstance:
     - target: {fileID: 3401107622489719512, guid: 2a6d278e28107f045814f036e4c3aff4, type: 3}
       propertyPath: m_Name
       value: DebrisTarget BinBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401107622489719512, guid: 2a6d278e28107f045814f036e4c3aff4, type: 3}
+      propertyPath: m_TagString
+      value: Debris
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

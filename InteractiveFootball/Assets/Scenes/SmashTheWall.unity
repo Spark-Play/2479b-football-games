@@ -813,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7007994209180353296, guid: a599ab43e3c0a6949ad7daee81f1e91f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.026
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7007994209180353296, guid: a599ab43e3c0a6949ad7daee81f1e91f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3422,7 +3422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4479401275086629786, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02
+      value: -0.016
       objectReference: {fileID: 0}
     - target: {fileID: 4479401275086629786, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3454,6 +3454,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4479401275086629786, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599942520487183584, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8486,8 +8490,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9999999, y: 1.2611498, z: 1}
-  m_Center: {x: 0, y: 0.13057499, z: 0}
+  m_Size: {x: 0.9999999, y: 1.2611498, z: 0.9971466}
+  m_Center: {x: 0, y: 0.13057502, z: 0.0014266968}
 --- !u!23 &524241889
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14146,7 +14150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4479401275086629786, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06453838
+      value: 0.141
       objectReference: {fileID: 0}
     - target: {fileID: 4479401275086629786, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14179,6 +14183,26 @@ PrefabInstance:
     - target: {fileID: 4479401275086629786, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807515900051268917, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599942520487183584, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599942520487183584, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599942520487183584, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599942520487183584, guid: a2aefb7da0692e44a81c06df54afa007, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24880,7 +24904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7007994209180353296, guid: a599ab43e3c0a6949ad7daee81f1e91f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.018
+      value: -0.011
       objectReference: {fileID: 0}
     - target: {fileID: 7007994209180353296, guid: a599ab43e3c0a6949ad7daee81f1e91f, type: 3}
       propertyPath: m_LocalPosition.z

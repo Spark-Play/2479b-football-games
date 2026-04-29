@@ -42,7 +42,7 @@ public class EnemyTarget : MonoBehaviour, ITargetHandler
         if (other.tag == "OOB")
         {
             hit = true;
-            StartCoroutine(DestroySequence());
+            StartCoroutine(NeutralDestroy());
         }
     }
 
@@ -62,7 +62,7 @@ public class EnemyTarget : MonoBehaviour, ITargetHandler
         Vector3 targetPos = new Vector3(0, 0, -7);
 
         // Move slowly toward the target
-        Vector3 newPos = Vector3.MoveTowards(currentPos, targetPos, 0.6f * Time.fixedDeltaTime);
+        Vector3 newPos = Vector3.MoveTowards(currentPos, targetPos, 0.4f * Time.fixedDeltaTime);
 
         rb.MovePosition(newPos);
     }
@@ -116,6 +116,37 @@ public class EnemyTarget : MonoBehaviour, ITargetHandler
         Destroy(gameObject);
     }
 
+
+    IEnumerator NeutralDestroy()
+    {
+
+        yield return new WaitForSeconds(1f);
+        mr.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        mr.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        mr.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        mr.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        mr.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        mr.enabled = true;
+        yield return new WaitForSeconds(0.06f);
+        mr.enabled = false;
+        yield return new WaitForSeconds(0.06f);
+        mr.enabled = true;
+        yield return new WaitForSeconds(0.06f);
+        mr.enabled = false;
+        yield return new WaitForSeconds(0.03f);
+        mr.enabled = true;
+        yield return new WaitForSeconds(0.03f);
+        mr.enabled = false;
+
+
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
+    }
 
 
 }
