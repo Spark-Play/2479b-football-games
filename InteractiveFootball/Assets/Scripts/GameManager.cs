@@ -151,7 +151,6 @@ public class GameManager : MonoBehaviour
 
         minigameScores[currentPlayer] = individualScore;
 
-        SceneManager.UnloadSceneAsync(minigameInfos[currentGamemode].sceneName);
 
         if(currentGamemode >= 3)
         {
@@ -161,9 +160,6 @@ public class GameManager : MonoBehaviour
                 return;
             }
 
-            currentPlayer = 0;
-            currentGamemode = 0;
-            UpdateAttributes();
             mainScreen.EndOfMinigame();
         }
         else if(currentPlayer >= playerCount-1)
@@ -174,23 +170,23 @@ public class GameManager : MonoBehaviour
                 return;
             }
 
-            currentPlayer = 0;
-            currentGamemode++;
             //CalculateProgress();
-            UpdateAttributes();
             mainScreen.EndOfMinigame();
         }
         else
         {
-            currentPlayer++;
             //CalculateProgress();
-            UpdateAttributes();
             mainScreen.EndOfPlayerTurn();
         }
 
 
         //companionScreen.progressSlider.value = 
 
+    }
+
+    public void UnloadMinigame()
+    {
+        SceneManager.UnloadSceneAsync(minigameInfos[currentGamemode].sceneName);
     }
 
 

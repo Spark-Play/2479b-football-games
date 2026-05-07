@@ -17,3 +17,4 @@ MonoBehaviour:
   description: {fileID: 21300000, guid: d98a5dfb40165324686ea2005559e17f, type: 3}
   logo: {fileID: 21300000, guid: 4e68a5b46fba38148a68827492d01483, type: 3}
   sceneName: RushHour
+  previewClip: {fileID: 32900000, guid: 238f483cfc3be9842bd70781f1b4faf3, type: 3}

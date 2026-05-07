@@ -17,3 +17,4 @@ MonoBehaviour:
   description: {fileID: 21300000, guid: 7f255ccc2969ca84e9a6af2862e5b890, type: 3}
   logo: {fileID: 21300000, guid: de07616c065ba394f80010ade338a9c5, type: 3}
   sceneName: SmashTheWall
+  previewClip: {fileID: 32900000, guid: 8f2768a7741f3bd4e93abf60cac8938f, type: 3}

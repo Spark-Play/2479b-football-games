@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 [CreateAssetMenu(fileName = "MinigameInfo", menuName = "Scriptable Objects/MinigameInfo")]
 public class MinigameInfo : ScriptableObject
@@ -10,4 +11,5 @@ public class MinigameInfo : ScriptableObject
     public Sprite description;
     public Sprite logo;
     public string sceneName;
+    public VideoClip previewClip;
 }
