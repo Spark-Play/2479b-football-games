@@ -43,16 +43,26 @@ public class UIManagerMainScreen : MonoBehaviour
     [SerializeField]
     Image getReadyPlayerCell;
 
-    [Header("Misc")]
+
+    [Header("Rives")]
 
     [SerializeField]
+    RiveWidget retrieveBallsRives;
+    [SerializeField]
     RiveWidget transitionDoorsRive;
+    [Header("Misc")]
+
     [SerializeField]
     TMP_Text[] minigameLeaderboardEntries;
     [SerializeField]
     TMP_Text[] finalLeaderboardEntries;
 
     private MinigameInfo currentMinigameInfo;
+
+    private void Start()
+    {
+        transitionDoorsRive.transform.parent.gameObject.SetActive(true);
+    }
 
     public void UpdateAttributes()
     {
@@ -74,7 +84,7 @@ public class UIManagerMainScreen : MonoBehaviour
         titleCardImage.sprite = currentMinigameInfo.logo;
 
 
-        previewVideo.clip = currentMinigameInfo.previewClip;
+        //previewVideo.clip = currentMinigameInfo.previewClip;
 
         //getReadySubtitle.text =  $"{GameManager.instance.playerNames[GameManager.instance.currentPlayer]} | {currentMinigameInfo.name}";
         //getReadyTotalScore.text = $"Total Score: {GameManager.instance.totalScores[GameManager.instance.currentPlayer]}";
@@ -141,9 +151,11 @@ public class UIManagerMainScreen : MonoBehaviour
 
         //Retrieve Balls
         NextScreen();
-        NextScreen();
+        yield return new WaitForSeconds(0.1f);
+        retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("intro").Trigger();
         yield return new WaitForSeconds(2f);
-
+        retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("outro").Trigger();
+        yield return new WaitForSeconds(0.5f);
         //Leaderboard
         NextScreen();
         NextScreen();
@@ -155,6 +167,7 @@ public class UIManagerMainScreen : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         print(GameManager.instance.currentGamemode);
 
+        mainScreens[currentScreen].SetActive(false);
         GameManager.instance.UnloadMinigame();
 
 
@@ -175,16 +188,18 @@ public class UIManagerMainScreen : MonoBehaviour
 
     private IEnumerator IEndOfPlayerTurn()
     {
-        //Time!
-        NextScreen();
         //Retrieve Balls
         NextScreen();
+        yield return new WaitForSeconds(0.1f);
+        retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("intro").Trigger();
         yield return new WaitForSeconds(4f);
-
+        retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("outro").Trigger();
+        yield return new WaitForSeconds(0.5f);
 
         transitionDoorsRive.StateMachine.ViewModelInstance.GetBooleanProperty("triggerOutro").Value = false;
 
         yield return new WaitForSeconds(2.5f);
+        mainScreens[currentScreen].SetActive(false);
         GameManager.instance.UnloadMinigame();
 
         //NextScreen();
@@ -205,21 +220,28 @@ public class UIManagerMainScreen : MonoBehaviour
 
     IEnumerator IFirstTimeMinigameTransition()
     {
-        transitionDoorsRive.gameObject.SetActive(true);
-        //transitionDoorsRive.StateMachine.ViewModelInstance.GetBooleanProperty("triggerOutro").Value = false;
-
         Instantiate(riveLogos[GameManager.instance.currentGamemode], logoPanel.transform);
 
+        transitionDoorsRive.gameObject.SetActive(true);
+        if (GameManager.instance.currentGamemode == 0) yield return new WaitForSeconds(2.5f);
 
-        if(GameManager.instance.currentGamemode == 0) yield return new WaitForSeconds(2.5f);
 
-        mainScreens[currentScreen].SetActive(false);
 
-        //Objectives Screen
-        SetScreen(3);
-        yield return new WaitForSeconds(10f);
+        mainScreens[0].transform.parent.gameObject.SetActive(false);
+        GameManager.instance.LoadMinigame();
+
+            
+            yield return new WaitForSeconds(1f);
+
+        transitionDoorsRive.StateMachine.ViewModelInstance.GetBooleanProperty("triggerOutro").Value = true;
+        yield return new WaitForSeconds(1f);
+
 
         //Logo Screen
+        SetScreen(3);
+        yield return new WaitForSeconds(3f);
+
+        //Instructions Screen
         NextScreen();
         yield return new WaitForSeconds(2f);
 
@@ -235,32 +257,30 @@ public class UIManagerMainScreen : MonoBehaviour
     IEnumerator IMinigameTransition()
     {
 
-        //mainScreens[currentScreen].SetActive(false);
+
 
         GameManager.instance.individualScore = 0;
+        GameManager.instance.ResetScoreStreak();
 
-
-
-        GameManager.instance.LoadMinigame();
-
-
+        if (GameManager.instance.currentPlayer > 0)
+        {
+            GameManager.instance.LoadMinigame();
+        }
         yield return new WaitForSeconds(0.8f);
 
 
         transitionDoorsRive.StateMachine.ViewModelInstance.GetBooleanProperty("triggerOutro").Value = true;
-        mainScreens[currentScreen].SetActive(false);
-        //Logo Screen
+
+        yield return new WaitForSeconds(2f);
+
+        //Next Player Screen
         SetScreen(5);
-        GameManager.instance.ResetScoreStreak();
-
-
-
-        yield return new WaitForSeconds(5f);
-
+        yield return new WaitForSeconds(3f);
         mainScreens[currentScreen].SetActive(false);
+        yield return new WaitForSeconds(1f);
 
-        //IMinigameController.instance.MinigameIntro();
 
+        GameManager.instance.StartMinigame();
 
     }
 

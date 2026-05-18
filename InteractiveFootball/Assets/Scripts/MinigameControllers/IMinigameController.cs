@@ -3,6 +3,8 @@ using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class IMinigameController : MonoBehaviour
 {
@@ -24,6 +26,9 @@ public class IMinigameController : MonoBehaviour
 
     [SerializeField]
     GameObject[] hitEffects;
+
+    [SerializeField]
+    Volume defaultVolumeProfile;
 
     public static event Action OnMinigameStart;
 
@@ -58,11 +63,37 @@ public class IMinigameController : MonoBehaviour
     }
 
 
-    void Awake()
+    void Start()
     {
         instance = this;
 
-        MinigameIntro();
+
+        defaultVolumeProfile.profile.TryGet(out colorAdjustments);
+
+        //MinigameIntro();
+
+        //StartCoroutine(TransitionLights(Color.white, Color.black, 0));
+        StartCoroutine(TransitionLights(Color.black, Color.white, 1.5f));
+    }
+
+    private ColorAdjustments colorAdjustments;
+
+    IEnumerator TransitionLights(Color startColor, Color endColor, float startDelay)
+    {
+        yield return new WaitForSeconds(startDelay);
+
+        float duration = 3f;
+        float elapsed = 0;
+
+
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            colorAdjustments.colorFilter.value = Color.Lerp(startColor, endColor, elapsed / duration);
+            yield return null;
+        }
+        colorAdjustments.colorFilter.value = endColor;
     }
 
 
@@ -73,18 +104,20 @@ public class IMinigameController : MonoBehaviour
 
     public virtual void StartMinigame()
     {
-        timerText.gameObject.SetActive(true);
-        streakBonusText.transform.parent.gameObject.SetActive(true);
-        scoreText.transform.parent.gameObject.SetActive(true);
-
-        canShoot = true;
-        OnMinigameStart.Invoke();
-        StartCoroutine(IStartTimer(2));
+        GetReadyCountdown();
     }
 
 
-    IEnumerator IStartTimer(int countdownLength)
+    IEnumerator IStartTimer()
     {
+        int countdownLength = 60;
+
+#if UNITY_EDITOR 
+        countdownLength = 2;
+#endif
+
+
+
         for (int i = countdownLength; i >= 0; i--)
         {
             int minutes = i / 60;
@@ -94,6 +127,14 @@ public class IMinigameController : MonoBehaviour
             yield return new WaitForSeconds(secondSpeed);
         }
 
+
+        //Disable HUD
+        transform.GetChild(0).gameObject.SetActive(false);
+
+        StartCoroutine(TransitionLights(Color.white, Color.black, 0));
+        yield return new WaitForSeconds(3f);
+
+
         EndMinigame();
 
     }
@@ -101,8 +142,6 @@ public class IMinigameController : MonoBehaviour
 
     public void EndMinigame()
     {
-        //Disable HUD
-        transform.GetChild(0).gameObject.SetActive(false);
         GameManager.instance.BeginNewMinigame();
     }
 
@@ -114,7 +153,7 @@ public class IMinigameController : MonoBehaviour
     IEnumerator IGetReadyCountdown(int countdownLength)
     {
 
-        yield return new WaitForSeconds(countdownDelay);
+        //yield return new WaitForSeconds(countdownDelay);
 
         for (int i = countdownLength; i > 0; i--)
         {
@@ -129,7 +168,14 @@ public class IMinigameController : MonoBehaviour
 
         countdownText.text = "";
 
-        StartMinigame();
+
+        timerText.gameObject.SetActive(true);
+        streakBonusText.transform.parent.gameObject.SetActive(true);
+        scoreText.transform.parent.gameObject.SetActive(true);
+
+        canShoot = true;
+        OnMinigameStart.Invoke();
+        StartCoroutine(IStartTimer());
     }
 
 
