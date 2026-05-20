@@ -6,7 +6,8 @@ public class WallTarget : MonoBehaviour, ITargetHandler
 {
     [field: SerializeField]
     public int pointValue { get; set; } = 10;
-
+    
+    public GameObject scorePopup { get; set; }
 
     [SerializeField]
     GameObject hitParticleEffect;
@@ -26,6 +27,12 @@ public class WallTarget : MonoBehaviour, ITargetHandler
     void MinigameStart()
     {
         canHit = true;
+    }
+    public void OnComplexHit(Vector3 hitPoint, bool addScore)
+    {
+        if (!canHit) return;
+        Instantiate(hitParticleEffect, new Vector3(hitPoint.x, hitPoint.y, transform.position.z), Quaternion.identity);
+        if (addScore) if (GameManager.instance != null) GameManager.instance.UpdateScoreCancelStreak(pointValue);
     }
 
     public void OnHit(Vector3 hitPoint)

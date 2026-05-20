@@ -72,7 +72,6 @@ public class IMinigameController : MonoBehaviour
 
         //MinigameIntro();
 
-        //StartCoroutine(TransitionLights(Color.white, Color.black, 0));
         StartCoroutine(TransitionLights(Color.black, Color.white, 1.5f));
     }
 
@@ -113,7 +112,7 @@ public class IMinigameController : MonoBehaviour
         int countdownLength = 60;
 
 #if UNITY_EDITOR 
-        countdownLength = 2;
+        countdownLength = 60;
 #endif
 
 
@@ -131,7 +130,7 @@ public class IMinigameController : MonoBehaviour
         //Disable HUD
         transform.GetChild(0).gameObject.SetActive(false);
 
-        StartCoroutine(TransitionLights(Color.white, Color.black, 0));
+        StartCoroutine(TransitionLights(Color.white, Color.grey, 0));
         yield return new WaitForSeconds(3f);
 
 
@@ -262,17 +261,16 @@ public class IMinigameController : MonoBehaviour
                     if (GameManager.instance != null) GameManager.instance.ResetScoreStreak();
                     Instantiate(hitEffects[0], new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
                 }
+
             }
 
-                if (hit.collider.CompareTag("BrickArea"))
-                {
-                    //Instantiate(hitEffects[0], new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
-                hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
+            if (hit.collider.CompareTag("BrickArea"))
+            {
+                hit.collider.GetComponentInParent<WallTarget>()?.OnComplexHit(hit.point, !hitAnyTarget);
             }
-                else if (hit.collider.CompareTag("NetArea"))
-                {
-                    //Instantiate(hitEffects[1], new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
-                hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
+            else if (hit.collider.CompareTag("NetArea"))
+            {
+                hit.collider.GetComponentInParent<WallTarget>()?.OnComplexHit(hit.point, !hitAnyTarget);
             }
         }
 

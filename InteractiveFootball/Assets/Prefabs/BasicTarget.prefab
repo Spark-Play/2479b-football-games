@@ -126,5 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicTarget
   <pointValue>k__BackingField: 10
+  <scorePopup>k__BackingField: {fileID: 2346900336220243016, guid: 872cf900ee67b7c4a9ac17f018a0179a, type: 3}
   hitParticleEffect: {fileID: 6665343560293125782, guid: 8d2ab1929baa8154bb800df076211b0d, type: 3}
   canHit: 1

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SplittingTarget
   <pointValue>k__BackingField: 10
+  <scorePopup>k__BackingField: {fileID: 2346900336220243016, guid: 872cf900ee67b7c4a9ac17f018a0179a, type: 3}
   model: {fileID: 2326489021566175593}
   targetVariants:
   - {fileID: 2975462026853474705, guid: 1eadf8094517c754abd2f315c639491e, type: 3}
@@ -57,6 +58,7 @@ MonoBehaviour:
   - {fileID: 1686129377571933374, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
   - {fileID: 1686129377571933374, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
   hitParticleEffect: {fileID: 550637641713192794, guid: 95851b7f3b9b7564c9046807ea3cb902, type: 3}
+  canHit: 1
   safe: 0
 --- !u!135 &2101577445960283633
 SphereCollider:

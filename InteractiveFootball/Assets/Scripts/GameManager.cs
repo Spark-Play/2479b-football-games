@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateScoreCancelStreak(int pointValue)
+    public int UpdateScoreCancelStreak(int pointValue)
     {
 
 
@@ -65,9 +65,11 @@ public class GameManager : MonoBehaviour
         totalScores[currentPlayer] += calculatedScore;
         individualScore += calculatedScore;
         IMinigameController.instance.scoreText.text = individualScore.ToString();
+
+        return calculatedScore;
     }
 
-    public void UpdateScore(int pointValue)
+    public int UpdateScore(int pointValue)
     {
         //Calc Streak Bonus
         int streakBonus = 0;
@@ -105,8 +107,7 @@ public class GameManager : MonoBehaviour
 
         IMinigameController.instance.streakBonusText.text = streak.ToString();
 
-
-        print(streak);
+        return calculatedScore;
     }
 
     public void StartSession()

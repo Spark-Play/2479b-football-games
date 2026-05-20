@@ -7,6 +7,8 @@ public class DebrisTarget : MonoBehaviour, ITargetHandler
     [field: SerializeField]
     public int pointValue { get; set; } = 10;
 
+    [field: SerializeField]
+    public GameObject scorePopup { get; set; }
 
     [SerializeField]
     GameObject hitParticleEffect;
@@ -51,7 +53,12 @@ public class DebrisTarget : MonoBehaviour, ITargetHandler
     {
         if (!canHit) return;
         Instantiate(hitParticleEffect, new Vector3(hitPoint.x, hitPoint.y, transform.position.z), Quaternion.identity);
-        if (GameManager.instance != null) GameManager.instance.UpdateScoreCancelStreak(pointValue);
+
+
+        GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), Quaternion.identity);
+        if (GameManager.instance != null) scorePopupGameobject.GetComponent<SetCustomFields>().SetTextValue("+" + GameManager.instance.UpdateScoreCancelStreak(pointValue));
+
+
 
         Vector3 forceDirection = transform.forward;
 

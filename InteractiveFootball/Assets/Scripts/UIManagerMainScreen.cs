@@ -51,13 +51,18 @@ public class UIManagerMainScreen : MonoBehaviour
     [SerializeField]
     RiveWidget transitionDoorsRive;
     [Header("Misc")]
-
+    [SerializeField]
+    TMP_Text retrieveBallsCountdown;
     [SerializeField]
     TMP_Text[] minigameLeaderboardEntries;
     [SerializeField]
     TMP_Text[] finalLeaderboardEntries;
 
     private MinigameInfo currentMinigameInfo;
+
+
+    int retrieveBallsLength = 10;
+
 
     private void Start()
     {
@@ -144,6 +149,8 @@ public class UIManagerMainScreen : MonoBehaviour
 
     }
 
+
+
     private IEnumerator IEndOfMinigame()
     {
         SortAndUpdateLeaderboard(GameManager.instance.minigameScores, minigameLeaderboardEntries);
@@ -152,12 +159,15 @@ public class UIManagerMainScreen : MonoBehaviour
         //Retrieve Balls
         NextScreen();
         yield return new WaitForSeconds(0.1f);
+
+
+
         retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("intro").Trigger();
-        yield return new WaitForSeconds(2f);
+
+        yield return StartCoroutine(Countdown(retrieveBallsCountdown, retrieveBallsLength));
         retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("outro").Trigger();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         //Leaderboard
-        NextScreen();
         NextScreen();
 
         yield return new WaitForSeconds(5f);
@@ -192,9 +202,11 @@ public class UIManagerMainScreen : MonoBehaviour
         NextScreen();
         yield return new WaitForSeconds(0.1f);
         retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("intro").Trigger();
-        yield return new WaitForSeconds(4f);
+
+
+        yield return StartCoroutine(Countdown(retrieveBallsCountdown, retrieveBallsLength));
         retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("outro").Trigger();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         transitionDoorsRive.StateMachine.ViewModelInstance.GetBooleanProperty("triggerOutro").Value = false;
 
@@ -304,7 +316,6 @@ public class UIManagerMainScreen : MonoBehaviour
         SortAndUpdateLeaderboard(GameManager.instance.totalScores, finalLeaderboardEntries);
 
         NextScreen();
-        NextScreen();
 
         yield return new WaitForSeconds(5f);
         NextScreen();
@@ -318,4 +329,13 @@ public class UIManagerMainScreen : MonoBehaviour
     }
 
 
-}
+    IEnumerator Countdown(TMP_Text text,int countdownLength)
+    {
+        for (int i = countdownLength; i > 0; i--)
+        {
+            text.text = i.ToString();
+            yield return new WaitForSeconds(1f);
+        }
+        text.text = "";
+    }
+    }
