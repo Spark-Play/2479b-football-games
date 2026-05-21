@@ -39,6 +39,10 @@ public class IMinigameController : MonoBehaviour
     public Cloth goalNet;
 
 
+    [SerializeField]
+    Animator hudAnim;
+
+
     public void AttachToNet(SphereCollider collider)
     {
         // 1. Get the current list of sphere pairs
@@ -112,7 +116,7 @@ public class IMinigameController : MonoBehaviour
         int countdownLength = 60;
 
 #if UNITY_EDITOR 
-        countdownLength = 60;
+        countdownLength = 20;
 #endif
 
 
@@ -127,8 +131,10 @@ public class IMinigameController : MonoBehaviour
         }
 
 
+        hudAnim.Play("OutroHUD");
+
         //Disable HUD
-        transform.GetChild(0).gameObject.SetActive(false);
+        //transform.GetChild(0).gameObject.SetActive(false);
 
         StartCoroutine(TransitionLights(Color.white, Color.grey, 0));
         yield return new WaitForSeconds(3f);
@@ -168,9 +174,12 @@ public class IMinigameController : MonoBehaviour
         countdownText.text = "";
 
 
-        timerText.gameObject.SetActive(true);
-        streakBonusText.transform.parent.gameObject.SetActive(true);
-        scoreText.transform.parent.gameObject.SetActive(true);
+
+        hudAnim.Play("IntroHUD");
+
+        //timerText.gameObject.SetActive(true);
+        //streakBonusText.transform.parent.gameObject.SetActive(true);
+        //scoreText.transform.parent.gameObject.SetActive(true);
 
         canShoot = true;
         OnMinigameStart.Invoke();

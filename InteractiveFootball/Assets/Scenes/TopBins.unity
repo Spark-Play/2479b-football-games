@@ -6040,6 +6040,7 @@ MonoBehaviour:
   defaultVolumeProfile: {fileID: 1988406378}
   canShoot: 0
   goalNet: {fileID: 2098644265}
+  hudAnim: {fileID: 1306917538}
   camera: {fileID: 1430227156}
   hitAnyTarget: 0
   targetRounds:
@@ -12175,6 +12176,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303769038}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1306917538 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8932320844594807853, guid: 584f36c897495824bb128cd73f40e036, type: 3}
+  m_PrefabInstance: {fileID: 1241264181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1311445807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4350290429278254857, guid: 43ea92dc8b72add4084992f4d5e90072, type: 3}
@@ -13117,7 +13123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430227154}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0144777335, y: -0.53169197, z: -0.009100262, w: 0.84676516}
+  m_LocalRotation: {x: -0.014477829, y: -0.53169197, z: -0.009100358, w: 0.84676516}
   m_LocalPosition: {x: 5.303364, y: 0.2215054, z: -0.57429504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

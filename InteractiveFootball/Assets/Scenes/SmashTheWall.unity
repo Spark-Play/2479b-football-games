@@ -2999,6 +2999,7 @@ MonoBehaviour:
   defaultVolumeProfile: {fileID: 1992788582}
   canShoot: 0
   goalNet: {fileID: 0}
+  hudAnim: {fileID: 5990509269934519031}
   camera: {fileID: 1430227156}
   hitAnyTarget: 0
   riveWidget: {fileID: 0}
@@ -26374,6 +26375,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 584f36c897495824bb128cd73f40e036, type: 3}
+--- !u!95 &5990509269934519031 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8932320844594807853, guid: 584f36c897495824bb128cd73f40e036, type: 3}
+  m_PrefabInstance: {fileID: 5990509269934519030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8163283109242079438
 PrefabInstance:
   m_ObjectHideFlags: 0

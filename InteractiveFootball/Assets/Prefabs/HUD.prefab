@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8288559004341781177}
   - component: {fileID: 123557559366615950}
   - component: {fileID: 6277345541610512722}
-  - component: {fileID: 5919095796494726013}
+  - component: {fileID: 8932320844594807853}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -32,8 +32,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1419523596589840544}
   - {fileID: 6184453608080939447}
+  - {fileID: 1419523596589840544}
   - {fileID: 1025735687144315675}
   - {fileID: 7666404798501770308}
   m_Father: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!95 &5919095796494726013
+--- !u!95 &8932320844594807853
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ Animator:
   m_GameObject: {fileID: 2219533167225581606}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b6def0953087e944bb740f2506c91f09, type: 2}
+  m_Controller: {fileID: 9100000, guid: f27e42c5a5dfc2543a1836dd9923db96, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -5662,8 +5662,10 @@ MonoBehaviour:
   defaultVolumeProfile: {fileID: 1757206462}
   canShoot: 0
   goalNet: {fileID: 2098644265}
+  hudAnim: {fileID: 2121787442}
   camera: {fileID: 1430227156}
   hitAnyTarget: 0
+  crossbarRive: {fileID: 1358354798}
 --- !u!4 &655379597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5089073150804280952, guid: 10ab2cded6c391848889e66c4e46991c, type: 3}
@@ -11294,7 +11296,7 @@ MonoBehaviour:
   m_rivePanel: {fileID: 1858018442}
   m_asset: {fileID: -4516626237390682484, guid: 85de6992cfa10454fab58a1cdf76d2b9, type: 3}
   m_artboardName: Artboard
-  m_stateMachineName: State Machine 1
+  m_stateMachineName: CrossbarStateMachine
   m_fit: 1
   m_alignment:
     m_x: 0
@@ -12019,7 +12021,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430227154}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.014478057, y: -0.53169197, z: -0.009100585, w: 0.84676516}
+  m_LocalRotation: {x: -0.014477988, y: -0.53169197, z: -0.009100516, w: 0.84676516}
   m_LocalPosition: {x: 5.303364, y: 0.2215054, z: -0.57429504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35638,6 +35640,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119930353}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &2121787442 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8932320844594807853, guid: 584f36c897495824bb128cd73f40e036, type: 3}
+  m_PrefabInstance: {fileID: 1612755472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2126936342
 PrefabInstance:
   m_ObjectHideFlags: 0

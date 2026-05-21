@@ -20492,6 +20492,7 @@ MonoBehaviour:
   defaultVolumeProfile: {fileID: 1773387549}
   canShoot: 0
   goalNet: {fileID: 0}
+  hudAnim: {fileID: 1295927785}
   camera: {fileID: 1430227156}
   hitAnyTarget: 0
 --- !u!1 &888750260
@@ -29544,6 +29545,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282523197}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1295927785 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8932320844594807853, guid: 584f36c897495824bb128cd73f40e036, type: 3}
+  m_PrefabInstance: {fileID: 1662023416}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1297747821
 GameObject:
   m_ObjectHideFlags: 0
@@ -38446,7 +38452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1773387549
 MonoBehaviour:
   m_ObjectHideFlags: 0
