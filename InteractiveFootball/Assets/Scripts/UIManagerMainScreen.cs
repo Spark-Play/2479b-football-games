@@ -61,11 +61,17 @@ public class UIManagerMainScreen : MonoBehaviour
     private MinigameInfo currentMinigameInfo;
 
 
+#if UNITY_EDITOR
+    int retrieveBallsLength = 1;
+#else
     int retrieveBallsLength = 10;
-
+#endif
 
     private void Start()
     {
+
+
+
         transitionDoorsRive.transform.parent.gameObject.SetActive(true);
     }
 

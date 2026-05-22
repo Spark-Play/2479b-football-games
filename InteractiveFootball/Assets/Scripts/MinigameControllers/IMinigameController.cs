@@ -67,7 +67,7 @@ public class IMinigameController : MonoBehaviour
     }
 
 
-    void Start()
+    public void Start()
     {
         instance = this;
 
@@ -75,6 +75,8 @@ public class IMinigameController : MonoBehaviour
         defaultVolumeProfile.profile.TryGet(out colorAdjustments);
 
         //MinigameIntro();
+
+        if (GameManager.instance == null) MinigameIntro();
 
         StartCoroutine(TransitionLights(Color.black, Color.white, 1.5f));
     }
@@ -116,7 +118,7 @@ public class IMinigameController : MonoBehaviour
         int countdownLength = 60;
 
 #if UNITY_EDITOR 
-        countdownLength = 20;
+       if(GameManager.instance != null)  countdownLength = 2;
 #endif
 
 

@@ -15,6 +15,7 @@ public class WoodworkMinigameController : IMinigameController
 
     private void Start()
     {
+        base.Start();
         StartCoroutine(LoopCrossbarAnim());
     }
 

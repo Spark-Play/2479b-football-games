@@ -1,3 +1,4 @@
+using Rive.Components;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -12,6 +13,9 @@ public class BasicTarget : MonoBehaviour, ITargetHandler
 
     [SerializeField]
     GameObject hitParticleEffect;
+
+    [SerializeField]
+    RiveWidget targetRive;
 
     bool checkDelete = true;
 
@@ -48,6 +52,9 @@ public class BasicTarget : MonoBehaviour, ITargetHandler
         GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), Quaternion.identity);
         if (GameManager.instance != null) scorePopupGameobject.GetComponent<SetCustomFields>().SetTextValue("+" + GameManager.instance.UpdateScore(pointValue));
 
+
+
+        targetRive.StateMachine.ViewModelInstance.GetTriggerProperty("hitbox1Click").Trigger();
 
         StartCoroutine(HideSequence());
     }
