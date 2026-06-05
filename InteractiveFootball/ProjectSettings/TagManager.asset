@@ -10,6 +10,7 @@ TagManager:
   - BrickArea
   - NetArea
   - Miss
+  - SpecificHitbox
   layers:
   - Default
   - TransparentFX

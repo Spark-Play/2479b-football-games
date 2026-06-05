@@ -1,3 +1,4 @@
+using Rive.Components;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -19,6 +20,9 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
 
     bool checkDelete = true;
 
+    [SerializeField]
+    RiveWidget riveWidget;
+
     void OnEnable()
     {
         SmashTheWallMinigameController.OnMinigameStart += MinigameStart;
@@ -33,6 +37,8 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
     void MinigameStart()
     {
         canHit = true;
+
+        riveWidget?.StateMachine?.ViewModelInstance?.GetTriggerProperty("draw")?.Trigger();
     }
 
     private void Awake()
@@ -47,6 +53,9 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
         yield return new WaitForSeconds(0.02f);
         safe = true;
         model.SetActive(true);
+
+        yield return new WaitForSeconds(0.1f);
+        riveWidget?.StateMachine?.ViewModelInstance?.GetTriggerProperty("draw")?.Trigger();
     }
 
     public void ResolveDelete(GameObject otherTarget)

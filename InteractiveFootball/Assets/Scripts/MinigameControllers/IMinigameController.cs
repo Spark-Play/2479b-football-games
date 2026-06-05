@@ -118,7 +118,7 @@ public class IMinigameController : MonoBehaviour
         int countdownLength = 60;
 
 #if UNITY_EDITOR 
-       if(GameManager.instance != null)  countdownLength = 2;
+       if(GameManager.instance != null)  countdownLength = 10;
 #endif
 
 
@@ -250,8 +250,15 @@ public class IMinigameController : MonoBehaviour
         {
             // 3. Check for a specific tag or component
 
+            if(hit.collider.CompareTag("SpecificHitbox"))
+            {
+                hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
+            }
+
             if (hitAnyTarget == false)
             {
+                
+
                 if ((hit.collider.CompareTag("Target") || hit.collider.CompareTag("Debris")))
                 {
                     //Debug.Log("Hit the specific object!");

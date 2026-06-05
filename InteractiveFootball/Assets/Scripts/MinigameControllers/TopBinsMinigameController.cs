@@ -42,11 +42,19 @@ public class TopBinsMinigameController : IMinigameController
         }
     }
 
+
     IEnumerator NextRound()
     {
         canShoot = false;
 
-        yield return new WaitForSeconds(1f);
+        
+            for (int j = 0; j < targetRounds[round].transform.childCount; j++)
+            {
+                targetRounds[round].transform.GetChild(j)?.GetComponent<BasicTarget>()?.HideSequenceCoroutine();
+            }
+        
+
+        yield return new WaitForSeconds(2f);
 
 
         round++;
