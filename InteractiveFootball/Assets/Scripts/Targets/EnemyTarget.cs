@@ -85,7 +85,7 @@ public class EnemyTarget : MonoBehaviour, ITargetHandler
         rb.AddForceAtPosition(forceDirection*5, hitPoint, ForceMode.Impulse);
 
 
-        GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), Quaternion.identity);
+        GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(hitPoint.x, hitPoint.y, transform.position.z - 0.5f), Quaternion.identity);
         if (GameManager.instance != null) scorePopupGameobject.GetComponent<SetCustomFields>().SetTextValue("+" + GameManager.instance.UpdateScore(pointValue));
 
 

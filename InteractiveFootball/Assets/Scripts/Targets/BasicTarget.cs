@@ -83,7 +83,7 @@ public class BasicTarget : MonoBehaviour, ITargetHandler
 
         if (GameManager.instance != null) Instantiate(hitParticleEffect, new Vector3(hitPoint.x, hitPoint.y, transform.position.z), Quaternion.identity);
 
-        GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), Quaternion.identity);
+        GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(hitPoint.x, hitPoint.y, transform.position.z - 0.5f), Quaternion.identity);
         if (GameManager.instance != null) scorePopupGameobject.GetComponent<SetCustomFields>().SetTextValue("+" + GameManager.instance.UpdateScore(pointValue));
 
         HideSequenceCoroutine();

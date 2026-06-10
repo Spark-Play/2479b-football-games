@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: forceStrength
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 412420078888913832, guid: 2a6d278e28107f045814f036e4c3aff4, type: 3}
+      propertyPath: hitParticleEffect
+      value: 
+      objectReference: {fileID: 6665343560293125782, guid: 667fa405c934ad94287f8c96a55340f1, type: 3}
     - target: {fileID: 2999070194707755904, guid: 2a6d278e28107f045814f036e4c3aff4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.71

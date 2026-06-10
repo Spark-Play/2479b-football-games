@@ -50,7 +50,7 @@ public class StaticTarget : MonoBehaviour, ITargetHandler
         if (cancelStreak == false)
         {
 
-            GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), Quaternion.identity);
+            GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(hitPoint.x, hitPoint.y, transform.position.z - 0.5f), Quaternion.identity);
             if (GameManager.instance != null) scorePopupGameobject.GetComponent<SetCustomFields>().SetTextValue("+" + GameManager.instance.UpdateScore(pointValue));
 
 
@@ -58,7 +58,7 @@ public class StaticTarget : MonoBehaviour, ITargetHandler
         else
         {
 
-            GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), Quaternion.identity);
+            GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(hitPoint.x, hitPoint.y, transform.position.z - 0.5f), Quaternion.identity);
             if (GameManager.instance != null) scorePopupGameobject.GetComponent<SetCustomFields>().SetTextValue("+" + GameManager.instance.UpdateScoreCancelStreak(pointValue));
 
 

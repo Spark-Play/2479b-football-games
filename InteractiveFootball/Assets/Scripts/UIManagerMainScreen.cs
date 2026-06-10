@@ -53,10 +53,13 @@ public class UIManagerMainScreen : MonoBehaviour
     [Header("Misc")]
     [SerializeField]
     TMP_Text retrieveBallsCountdown;
+
     [SerializeField]
-    TMP_Text[] minigameLeaderboardEntries;
+    public Leaderboardentry[] minigameLeaderboardEntries;
+
     [SerializeField]
-    TMP_Text[] finalLeaderboardEntries;
+    public Leaderboardentry[] finalLeaderboardEntries;
+
 
     private MinigameInfo currentMinigameInfo;
 
@@ -129,7 +132,7 @@ public class UIManagerMainScreen : MonoBehaviour
     public Dictionary<int, int> sortedLeaderboard = new Dictionary<int, int>();
 
 
-    void SortAndUpdateLeaderboard(int[] scores, TMP_Text[] entries)
+    void SortAndUpdateLeaderboard(int[] scores, Leaderboardentry[] entries)
     {
         sortedLeaderboard.Clear();
         for (int i = 0; i < GameManager.instance.playerCount; i++)
@@ -142,12 +145,12 @@ public class UIManagerMainScreen : MonoBehaviour
         int index = 0;
         foreach (var item in sortedLeaderboard)
         {
-            entries[index].color = GameManager.instance.playerColours[item.Key];
-
-            entries[index].text = "P" + (item.Key+1).ToString() + " " + GameManager.instance.playerNames[item.Key].Replace(" ", "") + " " + item.Value.ToString();
-
-            //entries[index].text = "askjdhsakhdas";
-
+            entries[index].playerID.text = "P" + (item.Key + 1).ToString();
+            entries[index].playerID.color = GameManager.instance.playerColours[item.Key];
+            entries[index].playerName.text = GameManager.instance.playerNames[item.Key];
+            entries[index].playerName.color = GameManager.instance.playerColours[item.Key];
+            entries[index].playerScore.text = item.Value.ToString();
+            entries[index].playerScore.color = GameManager.instance.playerColours[item.Key];
             index++;
         }
 
@@ -327,9 +330,9 @@ public class UIManagerMainScreen : MonoBehaviour
         NextScreen();
         GameManager.instance.companionScreen.EndGame(sortedLeaderboard);
         yield return new WaitForSeconds(5f);
-        NextScreen();
+        //NextScreen();
 
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene(0);
     }
@@ -344,4 +347,14 @@ public class UIManagerMainScreen : MonoBehaviour
         }
         text.text = "";
     }
+
+
+
     }
+
+[Serializable]
+public class Leaderboardentry{
+    public TMP_Text playerID;
+    public TMP_Text playerName;
+    public TMP_Text playerScore;
+}

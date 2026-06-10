@@ -132,6 +132,7 @@ public class IMinigameController : MonoBehaviour
             yield return new WaitForSeconds(secondSpeed);
         }
 
+        canShoot = false;
 
         hudAnim.Play("OutroHUD");
 
@@ -228,6 +229,7 @@ public class IMinigameController : MonoBehaviour
 
 
     public bool hitAnyTarget = false;
+    int targetsHit = 0;
 
     public void ShootUsingCoordinates(Vector2 screenCoordinates)
     {
@@ -239,12 +241,12 @@ public class IMinigameController : MonoBehaviour
 
         ShotTaken();
 
-        RaycastHit[] hits = Physics.RaycastAll(ray, 1000f);
+        RaycastHit[] hits = Physics.SphereCastAll(ray, 0.5f, 1000f);
 
         hits = hits.OrderBy(h => h.distance).ToArray();
 
         hitAnyTarget = false;
-
+        targetsHit = 0;
 
         foreach (RaycastHit hit in hits)
         {
@@ -255,7 +257,7 @@ public class IMinigameController : MonoBehaviour
                 hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
             }
 
-            if (hitAnyTarget == false)
+            if (hitAnyTarget == false || targetsHit < 2)
             {
                 
 
@@ -271,6 +273,7 @@ public class IMinigameController : MonoBehaviour
                     hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
 
                     hitAnyTarget = true;
+                    targetsHit++;
 
                     print("hit target");
                 }

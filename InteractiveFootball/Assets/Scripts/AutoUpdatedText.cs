@@ -10,7 +10,7 @@ public class AutoUpdatedText : MonoBehaviour
 
     public string textFormat;
 
-    public enum TextType { playerName, playerNumber, minigameName, totalScore, individualScore, minigameLogo, minigameColour };
+    public enum TextType { playerName, playerNumber, minigameName, totalScore, individualScore, minigameLogo, minigameColour, playerColour };
 
     public TextType textType;
 
@@ -86,6 +86,21 @@ public class AutoUpdatedText : MonoBehaviour
             }
 
             GetComponent<Image>().color = GameManager.instance.playerColours[index];
+        }
+        else if (textType == TextType.playerColour)
+        {
+            int index = (indexOverride != -1) ? indexOverride : GameManager.instance.currentPlayer;
+
+            TryGetComponent<TMP_Text>(out TMP_Text textElement);
+            {
+                textElement.color = GameManager.instance.playerColours[index];
+            }
+            
+            TryGetComponent<TMP_Text>(out TMP_Text imageElement);
+            {
+                imageElement.color = GameManager.instance.playerColours[index];
+            }
+
         }
         else if (textFormat == "")
         {
