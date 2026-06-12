@@ -40,7 +40,7 @@ public class IMinigameController : MonoBehaviour
 
 
     [SerializeField]
-    Animator hudAnim;
+    public Animator hudAnim;
 
 
     public void AttachToNet(SphereCollider collider)
@@ -118,7 +118,7 @@ public class IMinigameController : MonoBehaviour
         int countdownLength = 60;
 
 #if UNITY_EDITOR 
-       if(GameManager.instance != null)  countdownLength = 10;
+       if(GameManager.instance != null)  countdownLength = 60;
 #endif
 
 
@@ -188,7 +188,7 @@ public class IMinigameController : MonoBehaviour
         OnMinigameStart.Invoke();
         StartCoroutine(IStartTimer());
     }
-
+    
 
 
     [SerializeField]

@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
             streakBonus = 15;
         }
 
+       
 
 
         //Calc Net Score
@@ -104,6 +105,13 @@ public class GameManager : MonoBehaviour
 
         //Increase Streak
         streak++;
+
+        if (streak % 5 == 0)
+        {
+            IMinigameController.instance.hudAnim.Play("LightningTrigger");
+        }
+
+
 
         IMinigameController.instance.streakBonusText.text = streak.ToString();
 
