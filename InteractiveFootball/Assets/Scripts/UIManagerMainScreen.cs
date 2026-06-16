@@ -14,6 +14,9 @@ using UnityEngine.Video;
 
 public class UIManagerMainScreen : MonoBehaviour
 {
+    [SerializeField]
+    GameObject finalScreen;
+
 
     [SerializeField]
     GameObject[] playerCells;
@@ -323,6 +326,8 @@ public class UIManagerMainScreen : MonoBehaviour
 
 
         SortAndUpdateLeaderboard(GameManager.instance.totalScores, finalLeaderboardEntries);
+
+        finalScreen.SetActive(true);
 
         NextScreen();
 

@@ -10,6 +10,9 @@ public class DebrisTarget : MonoBehaviour, ITargetHandler
     [field: SerializeField]
     public GameObject scorePopup { get; set; }
 
+    [field: SerializeField]
+    public AudioSource hitSound { get; set; }
+
     [SerializeField]
     GameObject hitParticleEffect;
 
@@ -47,13 +50,12 @@ public class DebrisTarget : MonoBehaviour, ITargetHandler
     }
 
 
-
-
     public void OnHit(Vector3 hitPoint)
     {
         if (!canHit) return;
         Instantiate(hitParticleEffect, new Vector3(hitPoint.x, hitPoint.y, transform.position.z), Quaternion.identity);
 
+        hitSound.Play();
 
         GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), Quaternion.identity);
         if (GameManager.instance != null) scorePopupGameobject.GetComponent<SetCustomFields>().SetTextValue("+" + GameManager.instance.UpdateScoreCancelStreak(pointValue));

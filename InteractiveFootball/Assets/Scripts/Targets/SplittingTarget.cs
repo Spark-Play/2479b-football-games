@@ -13,6 +13,9 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
     [SerializeField]
     GameObject model;
 
+    [field: SerializeField]
+    public AudioSource hitSound { get; set; }
+
     [SerializeField]
     GameObject[] targetVariants;
     [SerializeField]
@@ -96,6 +99,7 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
         if (!canHit) return;
         //Instantiate(hitParticleEffect, new Vector3(hitPoint.x, hitPoint.y, transform.position.z), Quaternion.identity);
 
+        hitSound.Play();
         GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(hitPoint.x, hitPoint.y, transform.position.z - 0.5f), Quaternion.identity);
         if (GameManager.instance != null) scorePopupGameobject.GetComponent<SetCustomFields>().SetTextValue("+" + GameManager.instance.UpdateScore(pointValue));
 

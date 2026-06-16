@@ -8,4 +8,6 @@ public interface ITargetHandler
 
     public abstract void OnHit(Vector3 hitPoint);
 
+    public AudioSource hitSound { get; set; }
+
 }

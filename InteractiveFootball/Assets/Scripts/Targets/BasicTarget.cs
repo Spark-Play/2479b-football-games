@@ -28,6 +28,9 @@ public class BasicTarget : MonoBehaviour, ITargetHandler
     public bool firstTarget = false;
 
 
+    [field: SerializeField]
+    public AudioSource hitSound { get; set; }
+
     private void Start()
     {
         if (firstTarget)
@@ -46,9 +49,9 @@ public class BasicTarget : MonoBehaviour, ITargetHandler
     {
 
 
-        targetRive?.StateMachine?.ViewModelInstance?.GetTriggerProperty("draw")?.Trigger();
-        
-            IMinigameController.OnMinigameStart += MinigameStart;
+        StartCoroutine(DrawRive());
+
+        IMinigameController.OnMinigameStart += MinigameStart;
     }
 
     void OnDisable()
@@ -61,9 +64,16 @@ public class BasicTarget : MonoBehaviour, ITargetHandler
     {
         canHit = true;
 
-        targetRive?.StateMachine?.ViewModelInstance?.GetTriggerProperty("draw")?.Trigger();
-
+        StartCoroutine(DrawRive());
     }
+
+    IEnumerator DrawRive()
+    {
+        yield return new WaitForSeconds(Random.Range(0, 1f));
+
+        targetRive?.StateMachine?.ViewModelInstance?.GetTriggerProperty("draw")?.Trigger();
+    }
+        
 
     private void Awake()
     {
@@ -80,6 +90,8 @@ public class BasicTarget : MonoBehaviour, ITargetHandler
     {
         if (!canHit) return;
         canHit = false;
+
+        hitSound.Play();
 
         if (GameManager.instance != null) Instantiate(hitParticleEffect, new Vector3(hitPoint.x, hitPoint.y, transform.position.z), Quaternion.identity);
 

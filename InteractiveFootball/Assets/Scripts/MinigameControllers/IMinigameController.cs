@@ -118,7 +118,7 @@ public class IMinigameController : MonoBehaviour
         int countdownLength = 60;
 
 #if UNITY_EDITOR 
-       if(GameManager.instance != null)  countdownLength = 60;
+       if(GameManager.instance != null)  countdownLength = 45;
 #endif
 
 

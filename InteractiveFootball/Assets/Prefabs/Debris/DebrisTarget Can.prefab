@@ -160,6 +160,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3355727160791881578, guid: 2a6d278e28107f045814f036e4c3aff4, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: db467a708a8020f47bb295afa5c98459, type: 3}
     - target: {fileID: 3401107622489719512, guid: 2a6d278e28107f045814f036e4c3aff4, type: 3}
       propertyPath: m_Name
       value: DebrisTarget Can

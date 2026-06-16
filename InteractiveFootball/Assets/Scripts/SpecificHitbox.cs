@@ -13,15 +13,22 @@ public class SpecificHitbox : MonoBehaviour, ITargetHandler
     [field: SerializeField]
     public GameObject scorePopup { get; set; }
 
+    [field: SerializeField]
+    public AudioSource hitSound { get; set; }
+    
+
     public bool canHit = true;
 
     [SerializeField] RiveWidget riveWidget;
+
+
 
 
     public void OnHit(Vector3 hitPoint)
     {
         if (!canHit) return;
 
+        hitSound.Play();
         riveWidget.StateMachine.ViewModelInstance.GetTriggerProperty("hitbox" + triggerIndex + "Click").Trigger();
 
 

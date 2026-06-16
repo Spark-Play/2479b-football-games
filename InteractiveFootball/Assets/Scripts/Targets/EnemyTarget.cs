@@ -6,6 +6,8 @@ public class EnemyTarget : MonoBehaviour, ITargetHandler
 {
     [field: SerializeField]
     public int pointValue { get; set; } = 10;
+    [field: SerializeField]
+    public AudioSource hitSound { get; set; }
 
     [field: SerializeField]
     public GameObject scorePopup { get; set; }
@@ -13,6 +15,9 @@ public class EnemyTarget : MonoBehaviour, ITargetHandler
 
     [SerializeField]
     GameObject hitParticleEffect;
+
+    [SerializeField]
+    bool isHeavy = false;
 
     [SerializeField]
     Material redMat;
@@ -71,21 +76,39 @@ public class EnemyTarget : MonoBehaviour, ITargetHandler
 
     public void OnHit(Vector3 hitPoint)
     {
-        hit = true;
+        GameObject scorePopupGameobject;
+        Vector3 forceDirection;
+
+        hitSound.Play();
+
+        if (isHeavy)
+        {
+            forceDirection = transform.forward;
+            rb.AddForceAtPosition(forceDirection * 5, hitPoint, ForceMode.Impulse);
+
+            Instantiate(hitParticleEffect, hitPoint, Quaternion.identity);
+
+            scorePopupGameobject = Instantiate(scorePopup, new Vector3(hitPoint.x, hitPoint.y, transform.position.z - 0.5f), Quaternion.identity);
+            if (GameManager.instance != null) scorePopupGameobject.GetComponent<SetCustomFields>().SetTextValue("+" + GameManager.instance.UpdateScore(pointValue));
+
+            isHeavy = false;
+            return;
+        }
+
+            hit = true;
 
 
 
 
         Instantiate(hitParticleEffect, hitPoint, Quaternion.identity);
-        //print(hitPoint);
 
-        Vector3 forceDirection = transform.forward;
+        forceDirection = transform.forward;
 
         rb.freezeRotation = false;
         rb.AddForceAtPosition(forceDirection*5, hitPoint, ForceMode.Impulse);
 
 
-        GameObject scorePopupGameobject = Instantiate(scorePopup, new Vector3(hitPoint.x, hitPoint.y, transform.position.z - 0.5f), Quaternion.identity);
+        scorePopupGameobject = Instantiate(scorePopup, new Vector3(hitPoint.x, hitPoint.y, transform.position.z - 0.5f), Quaternion.identity);
         if (GameManager.instance != null) scorePopupGameobject.GetComponent<SetCustomFields>().SetTextValue("+" + GameManager.instance.UpdateScore(pointValue));
 
 

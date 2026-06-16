@@ -9,6 +9,9 @@ public class StaticTarget : MonoBehaviour, ITargetHandler
     [field: SerializeField]
     public GameObject scorePopup { get; set; }
 
+    [field: SerializeField]
+    public AudioSource hitSound { get; set; }
+
     [SerializeField]
     GameObject hitParticleEffect;
 
@@ -46,6 +49,7 @@ public class StaticTarget : MonoBehaviour, ITargetHandler
         if (!canHit) return;
         Instantiate(hitParticleEffect, new Vector3(hitPoint.x, hitPoint.y, transform.position.z), Quaternion.identity);
 
+        hitSound.Play();
 
         if (cancelStreak == false)
         {
