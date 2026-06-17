@@ -68,7 +68,7 @@ public class UIManagerMainScreen : MonoBehaviour
 
 
 #if UNITY_EDITOR
-    int retrieveBallsLength = 1;
+    int retrieveBallsLength = 10;
 #else
     int retrieveBallsLength = 10;
 #endif
@@ -113,16 +113,44 @@ public class UIManagerMainScreen : MonoBehaviour
 
     public void NextScreen()
     {
+        StartCoroutine(FadeNextScreen());
+    }
+
+    public IEnumerator FadeNextScreen()
+    {
+        if (mainScreens[currentScreen].TryGetComponent<CanvasGroup>(out CanvasGroup firstCanvasGroup))
+        {
+            yield return StartCoroutine(FadeCanvas(firstCanvasGroup, false));
+        }
         mainScreens[currentScreen].SetActive(false);
         currentScreen++;
         mainScreens[currentScreen].SetActive(true);
+        if (mainScreens[currentScreen].TryGetComponent<CanvasGroup>(out CanvasGroup secondCanvasGroup))
+        {
+            yield return StartCoroutine(FadeCanvas(secondCanvasGroup, true));
+        }
+
     }
+
 
     public void SetScreen(int index)
     {
+        StartCoroutine(FadeSetScreen(index));
+    }
+
+    public IEnumerator FadeSetScreen(int index)
+    {
+        if (mainScreens[currentScreen].TryGetComponent<CanvasGroup>(out CanvasGroup firstCanvasGroup))
+        {
+            yield return StartCoroutine(FadeCanvas(firstCanvasGroup, false));
+        }
         mainScreens[currentScreen].SetActive(false);
         currentScreen = index;
         mainScreens[currentScreen].SetActive(true);
+        if (mainScreens[currentScreen].TryGetComponent<CanvasGroup>(out CanvasGroup secondCanvasGroup))
+        {
+            yield return StartCoroutine(FadeCanvas(secondCanvasGroup, true));
+        }
     }
 
 
@@ -180,11 +208,14 @@ public class UIManagerMainScreen : MonoBehaviour
         retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("outro").Trigger();
         yield return new WaitForSeconds(1f);
         //Leaderboard
+
         NextScreen();
 
         yield return new WaitForSeconds(5f);
 
         transitionDoorsRive.StateMachine.ViewModelInstance.GetBooleanProperty("triggerOutro").Value = false;
+
+        StartCoroutine(FadeCanvas(mainScreens[currentScreen].GetComponent<CanvasGroup>(), false));
 
         yield return new WaitForSeconds(2.5f);
         print(GameManager.instance.currentGamemode);
@@ -212,7 +243,7 @@ public class UIManagerMainScreen : MonoBehaviour
     {
         //Retrieve Balls
         NextScreen();
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.4f);
         retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("intro").Trigger();
 
 
@@ -263,7 +294,7 @@ public class UIManagerMainScreen : MonoBehaviour
 
         //Logo Screen
         SetScreen(3);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3.5f);
 
         //Instructions Screen
         NextScreen();
@@ -300,6 +331,7 @@ public class UIManagerMainScreen : MonoBehaviour
         //Next Player Screen
         SetScreen(5);
         yield return new WaitForSeconds(3f);
+        yield return StartCoroutine(FadeCanvas(mainScreens[currentScreen].GetComponent<CanvasGroup>(), false));
         mainScreens[currentScreen].SetActive(false);
         yield return new WaitForSeconds(1f);
 
@@ -314,32 +346,83 @@ public class UIManagerMainScreen : MonoBehaviour
     }
 
 
+
     IEnumerator IEndGame()
     {
 
+
         SortAndUpdateLeaderboard(GameManager.instance.minigameScores, minigameLeaderboardEntries);
 
-        NextScreen();
-        yield return new WaitForSeconds(2f);
-        NextScreen();
-        yield return new WaitForSeconds(2f);
 
+        //Retrieve Balls
+        NextScreen();
+        yield return new WaitForSeconds(0.1f);
+
+
+
+        retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("intro").Trigger();
+
+        yield return StartCoroutine(Countdown(retrieveBallsCountdown, retrieveBallsLength));
+        retrieveBallsRives.StateMachine.ViewModelInstance.GetTriggerProperty("outro").Trigger();
+        yield return new WaitForSeconds(1f);
+        //Leaderboard
+        NextScreen();
+
+        yield return new WaitForSeconds(5f);
+
+        transitionDoorsRive.StateMachine.ViewModelInstance.GetBooleanProperty("triggerOutro").Value = false;
+
+        yield return new WaitForSeconds(1.5f);
 
         SortAndUpdateLeaderboard(GameManager.instance.totalScores, finalLeaderboardEntries);
 
+
         finalScreen.SetActive(true);
 
+        //yield return StartCoroutine(FadeCanvas(finalScreen.GetComponent<CanvasGroup>(), true));
+
         NextScreen();
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
+
+        transitionDoorsRive.StateMachine.ViewModelInstance.GetBooleanProperty("triggerOutro").Value = true;
+
+        yield return new WaitForSeconds(10f);
         NextScreen();
         GameManager.instance.companionScreen.EndGame(sortedLeaderboard);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(15f);
         //NextScreen();
 
         //yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene(0);
+    }
+
+
+    private IEnumerator FadeCanvas(CanvasGroup canvasGroup, bool fadeIn)
+    {
+
+        float startAlpha = 0;
+        float endAlpha = 1;
+        float duration = 0.3f;
+        float elapsed = 0;
+
+
+        if (!fadeIn)
+        {
+            startAlpha = 1;
+            endAlpha = 0;
+        }
+
+        while (elapsed < duration)
+        {
+
+            elapsed += Time.deltaTime;
+
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / duration);
+            yield return null;
+        }
+        canvasGroup.alpha = endAlpha;
     }
 
 

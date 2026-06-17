@@ -6811,6 +6811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 585746028}
+  - component: {fileID: 585746029}
   m_Layer: 5
   m_Name: Instructions
   m_TagString: Untagged
@@ -6844,6 +6845,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &585746029
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585746027}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &589433507
 GameObject:
   m_ObjectHideFlags: 0
@@ -7781,6 +7794,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 665488430}
+  - component: {fileID: 665488431}
   m_Layer: 5
   m_Name: Countdown
   m_TagString: Untagged
@@ -7808,6 +7822,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &665488431
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665488429}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &666706934
 GameObject:
   m_ObjectHideFlags: 0
@@ -14306,11 +14332,11 @@ RectTransform:
   - {fileID: 1752792510}
   - {fileID: 1662873242}
   - {fileID: 1450807518}
-  - {fileID: 2001871309}
   - {fileID: 168744144}
   - {fileID: 585746028}
   - {fileID: 898758810}
   - {fileID: 310101705}
+  - {fileID: 2001871309}
   m_Father: {fileID: 330585546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -17344,6 +17370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1450807518}
+  - component: {fileID: 1450807519}
   m_Layer: 5
   m_Name: Leaderboard
   m_TagString: Untagged
@@ -17375,6 +17402,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1450807519
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450807517}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1482447471
 GameObject:
   m_ObjectHideFlags: 0
@@ -17654,6 +17693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1489484275}
+  - component: {fileID: 1489484276}
   m_Layer: 5
   m_Name: TFP
   m_TagString: Untagged
@@ -17683,6 +17723,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1489484276
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489484274}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1489525326
 GameObject:
   m_ObjectHideFlags: 0
@@ -18597,6 +18649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1562014623}
+  - component: {fileID: 1562014624}
   m_Layer: 5
   m_Name: Results
   m_TagString: Untagged
@@ -18628,6 +18681,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1562014624
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562014622}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1564087126
 GameObject:
   m_ObjectHideFlags: 0
@@ -19753,6 +19818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1668598681}
+  - component: {fileID: 1668598682}
   m_Layer: 5
   m_Name: Next Player Screen
   m_TagString: Untagged
@@ -19785,6 +19851,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1668598682
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668598680}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1676061122
 GameObject:
   m_ObjectHideFlags: 0
