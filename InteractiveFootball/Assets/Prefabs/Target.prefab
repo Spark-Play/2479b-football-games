@@ -53,7 +53,7 @@ MonoBehaviour:
   <pointValue>k__BackingField: 10
   <scorePopup>k__BackingField: {fileID: 2346900336220243016, guid: 872cf900ee67b7c4a9ac17f018a0179a, type: 3}
   model: {fileID: 7974235532299741287}
-  <hitSound>k__BackingField: {fileID: 0}
+  <hitSound>k__BackingField: {fileID: 6373735142988208205}
   targetVariants:
   - {fileID: 2975462026853474705, guid: 1eadf8094517c754abd2f315c639491e, type: 3}
   - {fileID: 3708882318912671177, guid: 4c87ffcf333d3594ca2fdb3a7a219b65, type: 3}
@@ -61,6 +61,7 @@ MonoBehaviour:
   - {fileID: 1686129377571933374, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
   - {fileID: 1686129377571933374, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
   hitParticleEffect: {fileID: 6665343560293125782, guid: 8d2ab1929baa8154bb800df076211b0d, type: 3}
+  splatType: Splat1
   riveWidget: {fileID: 3612869553498359141}
   canHit: 1
   safe: 0
@@ -642,9 +643,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Rive.Runtime.Components::Rive.Components.RiveWidget
   m_rivePanel: {fileID: 5689957806055059793}
-  m_asset: {fileID: -4516626237390682484, guid: 59ec11a4ba3ae864f8c0d1afcae66b64, type: 3}
+  m_asset: {fileID: -4516626237390682484, guid: 9892e6708d103cf49865594b21135f6c, type: 3}
   m_artboardName: Artboard
-  m_stateMachineName: SimpleStateMachine
+  m_stateMachineName: RemakeStateMachine
   m_fit: 1
   m_alignment:
     m_x: 0

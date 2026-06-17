@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44a559045e1c4542b4faeb6fea101a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  triggerName: hitbox2Click
   triggerIndex: 2
   <pointValue>k__BackingField: 10
   <scorePopup>k__BackingField: {fileID: 0}
@@ -324,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44a559045e1c4542b4faeb6fea101a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  triggerName: hitbox1Click
   triggerIndex: 1
   <pointValue>k__BackingField: 10
   <scorePopup>k__BackingField: {fileID: 0}
@@ -455,6 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44a559045e1c4542b4faeb6fea101a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  triggerName: hitbox3Click
   triggerIndex: 3
   <pointValue>k__BackingField: 10
   <scorePopup>k__BackingField: {fileID: 0}
@@ -652,6 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44a559045e1c4542b4faeb6fea101a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  triggerName: hitbox4Click
   triggerIndex: 4
   <pointValue>k__BackingField: 10
   <scorePopup>k__BackingField: {fileID: 0}
@@ -783,6 +787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44a559045e1c4542b4faeb6fea101a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  triggerName: hitbox6Click
   triggerIndex: 6
   <pointValue>k__BackingField: 10
   <scorePopup>k__BackingField: {fileID: 0}
@@ -914,6 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44a559045e1c4542b4faeb6fea101a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  triggerName: hitbox5Click
   triggerIndex: 5
   <pointValue>k__BackingField: 10
   <scorePopup>k__BackingField: {fileID: 0}

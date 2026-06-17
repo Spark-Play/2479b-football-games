@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpecificHitbox : MonoBehaviour, ITargetHandler
 {
 
-    public int triggerIndex = 1;
+    public string triggerName = "";
 
     [field: SerializeField]
     public int pointValue { get; set; } = 10;
@@ -28,11 +28,16 @@ public class SpecificHitbox : MonoBehaviour, ITargetHandler
     {
         if (!canHit) return;
 
-        hitSound.Play();
-        riveWidget.StateMachine.ViewModelInstance.GetTriggerProperty("hitbox" + triggerIndex + "Click").Trigger();
+        //hitSound.Play();
+        riveWidget.StateMachine.ViewModelInstance.GetTriggerProperty(triggerName).Trigger();
 
 
+        Invoke("ResetRive", 1f);
+    }
 
+    void ResetRive()
+    {
+        riveWidget.StateMachine.ViewModelInstance.GetTriggerProperty("reset")?.Trigger();
     }
 
 

@@ -20987,8 +20987,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430227154}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.035088975, y: -0.013201504, z: -0.0005816593, w: 0.99929684}
-  m_LocalPosition: {x: -0.1516188, y: 0.8623657, z: -0.09358597}
+  m_LocalRotation: {x: -0.1505446, y: -0.30266818, z: -0.048479557, w: 0.9398819}
+  m_LocalPosition: {x: 6.23, y: 0.4860592, z: 7.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26765,6 +26765,14 @@ PrefabInstance:
     - target: {fileID: 1686129377571933374, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
       propertyPath: m_Name
       value: Large Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382067473770226654, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
+      propertyPath: m_asset
+      value: 
+      objectReference: {fileID: -4516626237390682484, guid: 9892e6708d103cf49865594b21135f6c, type: 3}
+    - target: {fileID: 2382067473770226654, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
+      propertyPath: m_stateMachineName
+      value: RemakeStateMachine
       objectReference: {fileID: 0}
     - target: {fileID: 2729796820194489683, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
       propertyPath: safe

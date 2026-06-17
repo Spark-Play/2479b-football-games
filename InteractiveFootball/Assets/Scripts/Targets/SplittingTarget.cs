@@ -21,6 +21,9 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
     [SerializeField]
     GameObject hitParticleEffect;
 
+    [SerializeField]
+    string splatType = "";
+
     bool checkDelete = true;
 
     [SerializeField]
@@ -41,7 +44,7 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
     {
         canHit = true;
 
-        riveWidget?.StateMachine?.ViewModelInstance?.GetTriggerProperty("draw")?.Trigger();
+        riveWidget?.StateMachine?.ViewModelInstance?.GetTriggerProperty(splatType)?.Trigger();
     }
 
     private void Awake()
@@ -58,7 +61,7 @@ public class SplittingTarget : MonoBehaviour, ITargetHandler
         model.SetActive(true);
 
         yield return new WaitForSeconds(0.1f);
-        riveWidget?.StateMachine?.ViewModelInstance?.GetTriggerProperty("draw")?.Trigger();
+        riveWidget?.StateMachine?.ViewModelInstance?.GetTriggerProperty(splatType)?.Trigger();
     }
 
     public void ResolveDelete(GameObject otherTarget)

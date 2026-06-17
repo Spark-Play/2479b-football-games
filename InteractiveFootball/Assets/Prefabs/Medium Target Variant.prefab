@@ -12,6 +12,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium Target Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2421495931171797970, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1880193
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421495931171797970, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8939303
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421495931171797970, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9462253
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421495931171797970, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421495931171797970, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949551002287395816, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
+      propertyPath: splatType
+      value: Splat2
+      objectReference: {fileID: 0}
     - target: {fileID: 3949551002287395816, guid: 73ea7d61663aabc41b7d6d5be6a8e1d5, type: 3}
       propertyPath: targetVariants.Array.size
       value: 1

@@ -361,7 +361,7 @@ MonoBehaviour:
   version: 2
   globalVolume: 0
   mode: 1
-  size: {x: 57.017403, y: 7.852807, z: 66.94}
+  size: {x: 57.017403, y: 7.8528066, z: 66.94}
   overrideRendererFilters: 0
   minRendererVolumeSize: 0.1
   objectLayerMask:
@@ -399,7 +399,7 @@ Transform:
   m_GameObject: {fileID: 17052250}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.137702, y: 2.3107553, z: 11.969999}
+  m_LocalPosition: {x: 15.137702, y: 2.310755, z: 11.969999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6246,6 +6246,7 @@ MonoBehaviour:
   hudAnim: {fileID: 1306917538}
   camera: {fileID: 1430227156}
   hitAnyTarget: 0
+  raycastRadius: 0.01
   targetRounds:
   - {fileID: 1754255730}
   - {fileID: 703544686}

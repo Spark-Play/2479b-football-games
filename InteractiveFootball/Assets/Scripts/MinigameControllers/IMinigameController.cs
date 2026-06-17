@@ -231,6 +231,9 @@ public class IMinigameController : MonoBehaviour
     public bool hitAnyTarget = false;
     int targetsHit = 0;
 
+    [SerializeField]
+    float raycastRadius = 0.5f;
+
     public void ShootUsingCoordinates(Vector2 screenCoordinates)
     {
         if(!canShoot) return;
@@ -241,7 +244,7 @@ public class IMinigameController : MonoBehaviour
 
         ShotTaken();
 
-        RaycastHit[] hits = Physics.SphereCastAll(ray, 0.5f, 1000f);
+        RaycastHit[] hits = Physics.SphereCastAll(ray, raycastRadius, 1000f);
 
         hits = hits.OrderBy(h => h.distance).ToArray();
 
