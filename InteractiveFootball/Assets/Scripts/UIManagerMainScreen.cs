@@ -176,12 +176,12 @@ public class UIManagerMainScreen : MonoBehaviour
         int index = 0;
         foreach (var item in sortedLeaderboard)
         {
+            entries[index].entryBackground.color = GameManager.instance.playerColours[item.Key];
             entries[index].playerID.text = "P" + (item.Key + 1).ToString();
             entries[index].playerID.color = GameManager.instance.playerColours[item.Key];
             entries[index].playerName.text = GameManager.instance.playerNames[item.Key];
-            entries[index].playerName.color = GameManager.instance.playerColours[item.Key];
             entries[index].playerScore.text = item.Value.ToString();
-            entries[index].playerScore.color = GameManager.instance.playerColours[item.Key];
+            if(entries[index].playerTotalScore != null) entries[index].playerTotalScore.text = GameManager.instance.minigameScores[item.Key].ToString();
             index++;
         }
 
@@ -198,7 +198,7 @@ public class UIManagerMainScreen : MonoBehaviour
 
         //Retrieve Balls
         NextScreen();
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
 
 
 
@@ -442,7 +442,9 @@ public class UIManagerMainScreen : MonoBehaviour
 
 [Serializable]
 public class Leaderboardentry{
+    public Image entryBackground;
     public TMP_Text playerID;
     public TMP_Text playerName;
     public TMP_Text playerScore;
+    public TMP_Text playerTotalScore;
 }

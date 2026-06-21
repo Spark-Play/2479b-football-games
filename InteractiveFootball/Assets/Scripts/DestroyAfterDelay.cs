@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,7 +10,12 @@ public class DestroyAfterDelay : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(MoveUILeftForDuration());
+        if (TryGetComponent<RectTransform>(out RectTransform rect))
+        {
+            StartCoroutine(MoveUILeftForDuration());
+        }
+
+
         Invoke("DestorySelf", delay);
     }
 
@@ -30,6 +36,8 @@ public class DestroyAfterDelay : MonoBehaviour
             float moveAmount = 5000 * Time.deltaTime;
 
             // Subtract from the X axis to move it left
+           
+            
             GetComponent<RectTransform>().anchoredPosition -= new Vector2(moveAmount, 0f);
 
             // Track time

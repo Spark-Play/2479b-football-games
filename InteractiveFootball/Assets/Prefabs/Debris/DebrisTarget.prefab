@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DebrisTarget
   <pointValue>k__BackingField: 15
   <scorePopup>k__BackingField: {fileID: 2346900336220243016, guid: 872cf900ee67b7c4a9ac17f018a0179a, type: 3}
-  <hitSound>k__BackingField: {fileID: 0}
+  <hitSound>k__BackingField: {fileID: 3355727160791881578}
   hitParticleEffect: {fileID: 6665343560293125782, guid: 667fa405c934ad94287f8c96a55340f1, type: 3}
   forceStrength: 2
   mr: {fileID: 0}

@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTarget
   <pointValue>k__BackingField: 20
-  <hitSound>k__BackingField: {fileID: 0}
+  <hitSound>k__BackingField: {fileID: 852810422412327431}
   <scorePopup>k__BackingField: {fileID: 2346900336220243016, guid: 872cf900ee67b7c4a9ac17f018a0179a, type: 3}
   debugPoint: {fileID: 4728010835137512182, guid: 81c07d08fc5f2104c9a1a2166fce2808, type: 3}
   hitParticleEffect: {fileID: 6665343560293125782, guid: 8d2ab1929baa8154bb800df076211b0d, type: 3}

@@ -91,12 +91,12 @@ public class AutoUpdatedText : MonoBehaviour
         {
             int index = (indexOverride != -1) ? indexOverride : GameManager.instance.currentPlayer;
 
-            TryGetComponent<TMP_Text>(out TMP_Text textElement);
+            if(TryGetComponent<TMP_Text>(out TMP_Text textElement))
             {
                 textElement.color = GameManager.instance.playerColours[index];
             }
-            
-            TryGetComponent<TMP_Text>(out TMP_Text imageElement);
+
+            if (TryGetComponent<Image>(out Image imageElement))
             {
                 imageElement.color = GameManager.instance.playerColours[index];
             }
