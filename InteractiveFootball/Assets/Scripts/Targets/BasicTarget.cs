@@ -31,12 +31,16 @@ public class BasicTarget : MonoBehaviour, ITargetHandler
     [field: SerializeField]
     public AudioSource hitSound { get; set; }
 
+    [SerializeField]
+    AudioSource spawnSound;
+
     private void Start()
     {
         if (firstTarget)
         {
             Invoke("ResetRive", 0.01f);
             firstTarget = false;
+            spawnSound.volume = 0;
         }
     }
 
@@ -72,6 +76,10 @@ public class BasicTarget : MonoBehaviour, ITargetHandler
         yield return new WaitForSeconds(Random.Range(0, 1f));
 
         targetRive?.StateMachine?.ViewModelInstance?.GetTriggerProperty("draw")?.Trigger();
+
+
+        yield return new WaitForSeconds(0.2f);
+        spawnSound.Play();
     }
         
 
@@ -107,7 +115,7 @@ public class BasicTarget : MonoBehaviour, ITargetHandler
 
     IEnumerator HideSequence()
     {
-
+        spawnSound.volume = 0.3f;
 
         yield return StartCoroutine(TransitionMaterialColor(Color.green, Color.clear, 0.5f));
 

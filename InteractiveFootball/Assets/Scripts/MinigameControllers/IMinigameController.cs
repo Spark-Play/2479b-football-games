@@ -71,6 +71,7 @@ public class IMinigameController : MonoBehaviour
     {
         instance = this;
 
+        if(AudioManager.instance != null) StartCoroutine(AudioManager.instance.FadeSound(ambience, true));
 
         defaultVolumeProfile.profile.TryGet(out colorAdjustments);
 
@@ -134,6 +135,8 @@ public class IMinigameController : MonoBehaviour
 
         canShoot = false;
 
+        if(AudioManager.instance != null) AudioManager.instance.PlaySound(2);
+
         hudAnim.Play("OutroHUD");
 
         //Disable HUD
@@ -150,6 +153,7 @@ public class IMinigameController : MonoBehaviour
 
     public void EndMinigame()
     {
+        StartCoroutine(AudioManager.instance.FadeSound(ambience, false));
         GameManager.instance.BeginNewMinigame();
     }
 
@@ -169,8 +173,11 @@ public class IMinigameController : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
+
+
         countdownText.text = "GO!";
 
+        if (AudioManager.instance != null) AudioManager.instance.PlaySound(1);
 
         yield return new WaitForSeconds(1f);
 
@@ -186,6 +193,8 @@ public class IMinigameController : MonoBehaviour
 
         canShoot = true;
         OnMinigameStart.Invoke();
+
+
         StartCoroutine(IStartTimer());
     }
     
@@ -316,5 +325,8 @@ public class IMinigameController : MonoBehaviour
             ShootUsingCoordinates(Input.mousePosition);
         }
     }
+
+    [SerializeField] AudioSource ambience;
+    
 
 }

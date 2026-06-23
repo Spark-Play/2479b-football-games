@@ -6247,6 +6247,7 @@ MonoBehaviour:
   camera: {fileID: 1430227156}
   hitAnyTarget: 0
   raycastRadius: 0.01
+  ambience: {fileID: 1213352238}
   targetRounds:
   - {fileID: 1754255730}
   - {fileID: 703544686}
@@ -8662,7 +8663,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1068325308778401495, guid: 98bb19447b13f72468cb2bddafd3d241, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 5b816953c54c0924b99993c15930fbd2, type: 3}
+  m_Resource: {fileID: 8300000, guid: f41a227dbdb29ae459a84fc9eebde32c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -11195,6 +11196,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5089073150804280952, guid: 10ab2cded6c391848889e66c4e46991c, type: 3}
   m_PrefabInstance: {fileID: 1194749008}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1213352238 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4241190083924967856, guid: 584f36c897495824bb128cd73f40e036, type: 3}
+  m_PrefabInstance: {fileID: 1241264181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1217640394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11458,6 +11464,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4241190083924967856, guid: 584f36c897495824bb128cd73f40e036, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ed0aecfdd050444bbdc91dde92ab302, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -13433,7 +13443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430227154}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.014478057, y: -0.53169197, z: -0.009100585, w: 0.84676516}
+  m_LocalRotation: {x: -0.014477849, y: -0.53169197, z: -0.009100378, w: 0.84676516}
   m_LocalPosition: {x: 5.303364, y: 0.2215054, z: -0.57429504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -32,6 +32,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.24
       objectReference: {fileID: 0}
+    - target: {fileID: 3422958502049309842, guid: aa02f58affa2813409782af2b00189ed, type: 3}
+      propertyPath: m_Pitch
+      value: 1.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422958502049309842, guid: aa02f58affa2813409782af2b00189ed, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 82b76405d06571b40aff67bd32fb2561, type: 3}
     - target: {fileID: 5363062257538070470, guid: aa02f58affa2813409782af2b00189ed, type: 3}
       propertyPath: m_asset
       value: 

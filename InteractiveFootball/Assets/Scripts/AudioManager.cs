@@ -18,23 +18,85 @@ public class AudioManager : MonoBehaviour
         audioSources[id].Play();
     }
 
-    public IEnumerator FadeOutSound(int id)
+
+    public IEnumerator FadeSound(int id, bool fadeIn)
+    {
+        AudioSource audioSource = audioSources[id];
+
+        if (fadeIn)
+        {
+            float endVolume = audioSource.volume;
+
+            audioSource.volume = 0;
+
+            audioSource.Play();
+
+            // Loop until the duration has passed
+            while (audioSource.volume < endVolume)
+            {
+                // Increase volume linearly over time
+                audioSource.volume += endVolume * Time.deltaTime / 3;
+
+                yield return null; // Wait for the next frame
+            }
+
+            audioSource.volume = endVolume;
+        }
+        else
+        {
+            float startVolume = audioSource.volume;
+            // Loop until the duration has passed
+            while (audioSource.volume > 0)
+            {
+                // Reduce volume linearly over time
+                audioSource.volume -= startVolume * Time.deltaTime / 3;
+
+                yield return null; // Wait for the next frame
+            }
+
+
+            audioSource.Stop();
+            audioSource.volume = startVolume; // Reset volume for next time it plays
+        }
+    }
+
+    public IEnumerator FadeSound(AudioSource audioSource, bool fadeIn)
     {
 
-        AudioSource mySource = audioSources[id];
-
-        float startVolume = mySource.volume;
-
-        // Loop until the duration has passed
-        while (mySource.volume > 0)
+        if (fadeIn)
         {
-            // Reduce volume linearly over time
-            mySource.volume -= startVolume * Time.deltaTime / 3;
+            float endVolume = audioSource.volume;
 
-            yield return null; // Wait for the next frame
+            audioSource.volume = 0;
+
+            audioSource.Play();
+
+            // Loop until the duration has passed
+            while (audioSource.volume < endVolume)
+            {
+                // Increase volume linearly over time
+                audioSource.volume += Time.deltaTime / 10;
+
+                yield return null; // Wait for the next frame
+            }
+
+            audioSource.volume = endVolume;
         }
+        else
+        {
+            float startVolume = audioSource.volume;
+            // Loop until the duration has passed
+            while (audioSource.volume > 0)
+            {
+                // Reduce volume linearly over time
+                audioSource.volume -= startVolume * Time.deltaTime / 3;
 
-        mySource.Stop();
-        mySource.volume = startVolume; // Reset volume for next time it plays
+                yield return null; // Wait for the next frame
+            }
+
+
+            audioSource.Stop();
+            audioSource.volume = startVolume; // Reset volume for next time it plays
+        }
     }
 }

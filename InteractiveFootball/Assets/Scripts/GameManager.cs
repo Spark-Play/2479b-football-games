@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
         mainScreen.FirstTimeMinigameTransition();
 
 
-        StartCoroutine(AudioManager.instance.FadeOutSound(0));
+        StartCoroutine(AudioManager.instance.FadeSound(0, false));
 
         StartCoroutine(IStartOverallTimer());
 
