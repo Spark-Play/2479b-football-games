@@ -567,6 +567,7 @@ GameObject:
   - component: {fileID: 1119038491116558796}
   - component: {fileID: 6889736592727130459}
   - component: {fileID: 5677502290022304236}
+  - component: {fileID: 4428789877402958420}
   m_Layer: 5
   m_Name: Player Name
   m_TagString: Untagged
@@ -708,6 +709,21 @@ MonoBehaviour:
   indexOverride: -1
   textFormat: 
   textType: 2
+--- !u!114 &4428789877402958420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4423710432712755890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc87e1de6c2f4674f8e82012641b5571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoUpdatedText
+  indexOverride: -1
+  textFormat: 
+  textType: 7
 --- !u!1 &4948311802902179447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,6 +1539,7 @@ GameObject:
   - component: {fileID: 6506670078939957299}
   - component: {fileID: 1111069285071413942}
   - component: {fileID: 3996822095566964128}
+  - component: {fileID: 6135267839593661846}
   m_Layer: 5
   m_Name: Player Name
   m_TagString: Untagged
@@ -1664,3 +1681,18 @@ MonoBehaviour:
   indexOverride: -1
   textFormat: 
   textType: 0
+--- !u!114 &6135267839593661846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621187440219223096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc87e1de6c2f4674f8e82012641b5571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoUpdatedText
+  indexOverride: -1
+  textFormat: 
+  textType: 7

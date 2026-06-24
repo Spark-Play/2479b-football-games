@@ -153,6 +153,7 @@ public class IMinigameController : MonoBehaviour
 
     public void EndMinigame()
     {
+        canShoot = false;
         StartCoroutine(AudioManager.instance.FadeSound(ambience, false));
         GameManager.instance.BeginNewMinigame();
     }
@@ -243,6 +244,8 @@ public class IMinigameController : MonoBehaviour
     [SerializeField]
     float raycastRadius = 0.5f;
 
+    public int maxHittableTargets = 2;
+
     public void ShootUsingCoordinates(Vector2 screenCoordinates)
     {
         if(!canShoot) return;
@@ -264,12 +267,9 @@ public class IMinigameController : MonoBehaviour
         {
             // 3. Check for a specific tag or component
 
-            if(hit.collider.CompareTag("SpecificHitbox"))
-            {
-                hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
-            }
+            
 
-            if (hitAnyTarget == false || targetsHit < 2)
+            if (hitAnyTarget == false || targetsHit < maxHittableTargets)
             {
                 
 
@@ -289,6 +289,11 @@ public class IMinigameController : MonoBehaviour
 
                     print("hit target");
                 }
+                else if (hit.collider.CompareTag("SpecificHitbox"))
+                    {
+                        hit.collider.GetComponentInParent<ITargetHandler>()?.OnHit(hit.point);
+                    }
+                
                 else
                 {
                     if (GameManager.instance != null) GameManager.instance.ResetScoreStreak();

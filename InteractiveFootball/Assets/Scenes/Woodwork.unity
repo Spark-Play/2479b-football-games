@@ -6195,6 +6195,7 @@ MonoBehaviour:
   camera: {fileID: 1430227156}
   hitAnyTarget: 0
   raycastRadius: 0
+  maxHittableTargets: 1
   ambience: {fileID: 1335285802}
   crossbarRive: {fileID: 1358354798}
 --- !u!4 &655379597 stripped

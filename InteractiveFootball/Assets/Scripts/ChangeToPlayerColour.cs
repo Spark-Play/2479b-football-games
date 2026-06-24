@@ -12,6 +12,7 @@ public class ChangeToPlayerColour : MonoBehaviour
 
         foreach (var item in particles)
         {
+            if (GameManager.instance == null) return;
             item.startColor = GameManager.instance.playerColours[GameManager.instance.currentPlayer];
         }
     }

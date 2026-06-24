@@ -30,6 +30,9 @@ public class AutoUpdatedText : MonoBehaviour
     {
         //print("UPDATED" + gameObject.name);
 
+        if (GameManager.instance == null) return;
+
+
         string text = "no data found";
 
         if(textType == TextType.playerName)
