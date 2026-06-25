@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
         minigameScores[currentPlayer] = individualScore;
 
 
-        if(currentGamemode >= 3)
+        if(currentGamemode > 3)
         {
             if (timerEnded)
             {

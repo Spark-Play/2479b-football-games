@@ -18296,8 +18296,8 @@ MonoBehaviour:
   playerCount: 0
   progress: 0
   minigameInfos:
-  - {fileID: 11400000, guid: 367b892afaa460940896e8ee7b8011e6, type: 2}
   - {fileID: 11400000, guid: 790bb0237a36cd74f80ee5dc674f390b, type: 2}
+  - {fileID: 11400000, guid: 367b892afaa460940896e8ee7b8011e6, type: 2}
   - {fileID: 11400000, guid: 2739541f9c233c44dae0494ac423570f, type: 2}
   - {fileID: 11400000, guid: dc53b116edaefb84db5154611f032aff, type: 2}
   streak: 0

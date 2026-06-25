@@ -68,7 +68,7 @@ public class UIManagerMainScreen : MonoBehaviour
 
 
 #if UNITY_EDITOR
-    int retrieveBallsLength = 10;
+    int retrieveBallsLength = 2;
 #else
     int retrieveBallsLength = 10;
 #endif

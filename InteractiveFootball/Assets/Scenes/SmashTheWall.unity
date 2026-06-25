@@ -3003,6 +3003,7 @@ MonoBehaviour:
   camera: {fileID: 1430227156}
   hitAnyTarget: 0
   raycastRadius: 0.5
+  maxHittableTargets: 2
   ambience: {fileID: 5990509269934519032}
   riveWidget: {fileID: 0}
 --- !u!1001 &444558937
@@ -26855,6 +26856,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8067638423289894738, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045370995946819292, guid: 6be24fec2d7bc9844a8c189ffdb0cbd5, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

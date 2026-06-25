@@ -24,6 +24,21 @@ public class TopBinsMinigameController : IMinigameController
         base.StartMinigame();
     }
 
+    void OnEnable()
+    {
+        IMinigameController.OnMinigameStart += GameplayStart;
+    }
+
+    void OnDisable()
+    {
+        IMinigameController.OnMinigameStart -= GameplayStart;
+    }
+
+    public void GameplayStart()
+    {
+        targetRounds[0].SetActive(true);
+    }
+
     public override void ShotTaken()
     {
 
